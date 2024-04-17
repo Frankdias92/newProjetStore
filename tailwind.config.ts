@@ -25,6 +25,7 @@ const config: Config = {
         draco: ['var(--font-draco)'],
         decking: ['var(--font-decking)'],
         galantic: ['var(--font-galantic)'],
+        roboto: ['var(--font-roboto)']
       }
     },
   },

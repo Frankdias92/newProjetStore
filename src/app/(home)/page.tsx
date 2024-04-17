@@ -1,5 +1,6 @@
 'use client'
 
+import { Explore } from "@/components/home/explore";
 import { Header } from "@/components/home/header";
 import { Main } from "@/components/home/main";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <section className="flex w-full min-h-full flex-col justify-between items-center bg-store-primary text-store-secondary">
         <Header />
         <Main />
+        <Explore />
       </section>
   );
 }
