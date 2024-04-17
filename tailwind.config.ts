@@ -18,7 +18,13 @@ const config: Config = {
       },
       colors: {
         "store-primary": "#1E1E1E",
-        "store-secondary": "#F4EDE8"
+        "store-secondary": "#F4EDE8",
+        "store-orange": "#F59D1A"
+      },
+      fontFamily: {
+        draco: ['var(--font-draco)'],
+        decking: ['var(--font-decking)'],
+        galantic: ['var(--font-galantic)'],
       }
     },
   },

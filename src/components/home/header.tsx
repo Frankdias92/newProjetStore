@@ -1,5 +1,5 @@
 
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarProvider, NavbarMenuItem} from "@nextui-org/react";
 
 
 export function Header() {
@@ -8,7 +8,10 @@ export function Header() {
 
         <Navbar shouldHideOnScroll>
             <NavbarBrand>
-            <span>Adriel 999</span>
+            <div className="font-draco flex flex-col relative">
+                <span className="text-2xl">Adriel</span>
+                <span className="absolute -right-3 text-store-orange bottom-0 translate-y-3 -rotate-6">999</span>
+            </div>
             </NavbarBrand>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -28,11 +31,12 @@ export function Header() {
                     </Link>
                 </NavbarItem>
 
-                <NavbarItem>
-                    <Button color="primary" variant="shadow">
-                        Discord
-                    </Button>
-                </NavbarItem>
+            </NavbarContent>
+
+            <NavbarContent justify="end">
+                <Button color="primary" variant="shadow">
+                    Discord
+                </Button>
             </NavbarContent>
         </Navbar>
        
