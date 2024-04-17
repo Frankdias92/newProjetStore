@@ -1,8 +1,9 @@
 'use client'
 
-import { Explore } from "@/components/home/explore";
 import { Header } from "@/components/home/header";
 import { Main } from "@/components/home/main";
+import { Explore } from "@/components/home/explore";
+import { Feature } from "@/components/home/feature";
 
 
 
@@ -12,6 +13,7 @@ export default function Home() {
         <Header />
         <Main />
         <Explore />
+        <Feature />
       </section>
   );
 }
