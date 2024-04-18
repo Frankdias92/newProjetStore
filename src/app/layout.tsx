@@ -4,6 +4,8 @@ import localFont from 'next/font/local'
 import "./globals.css";
 
 import { Providers } from "./providers";
+import { Header } from "@/components/home/header";
+import { Footer } from "@/components/home/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const montserrat = Roboto({ subsets: ["latin"], weight: ["300"], variable: '--font-roboto' })

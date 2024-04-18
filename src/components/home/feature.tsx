@@ -1,44 +1,81 @@
 import { Button } from "@nextui-org/react";
 import product01 from '../../assets/images/product-featured.png'
 import Image from "next/image";
-import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"
+import Slider from "react-slick"
+
 
 
 export function Feature() {
 
+    const settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      adaptiveHeight: false,
+      variableWidth: false
+    };
+
+    const dataFeature = [
+        {
+            id: 1,
+            productName: 'Logitech G29',
+            productDescriptions: 'Melhor volante de entrada pra quem procura algo novo e com garantia. O volante tem um Force Feedback que já dá uma boa noção de como o carro se comporta e os pedais tem embreagem',
+            price: 'R$ 1817,05',
+            image: product01
+        },
+        {
+            id: 2,
+            productName: 'Test',
+            productDescriptions: 'text Description',
+            price: 'R$ 1817,05',
+            image: product01
+        }
+    ]
+ 
+    
     return (
-        <div className="flex flex-col items-center w-full h-[639px] py-10 relative ">
+        <div className="flex flex-col items-center w-full h-full py-10 overflow-hidden">
 
-            <div className="flex w-3/4 flex-col justify-center">
+            <Slider {...settings} className="flex w-full flex-col h-full ">
 
-                <div className="w-3/5 z-30">
-                    <h3 className="font-galantic text-5xl mb-12">Logitech G29</h3>
-                    <p className="font-roboto text-xl break-words">
-                    Melhor volante de entrada pra quem procura algo novo e com garantia. O volante tem um Force Feedback que já dá uma boa noção de como o carro se comporta e os pedais tem embreagem
-                    </p>
+                {dataFeature.map((item) => {
+                    return (
 
-                    <div className="flex w-full items-center mt-10 gap-4">
-                        <span className="text-2xl font-bold font-galantic tracking-widest">R$ 1817,05</span>
-                        <Button className="flex py-7 px-8 font-roboto font-bold bg-store-orange text-2xl">COMPRAR</Button>
-                    </div>
-                </div>
-            </div>
+                        <section key={item.id} className="flex flex-row justify-start w-3/4 px-[15%] h-[639px] relative">
+                            <div className="flex w-full justify-start ">
 
-            <div className="flex w-[759px] h-[458px] absolute bg-cover top-20 right-28 z-10">
-                <Image src={product01} alt="" width={1518} height={916} quality={100}
-                    className="flex"
-                />
-            </div>
+                                <div className="w-3/5 z-30 ">
+                                    <h3 className="font-galantic text-5xl mb-12">{item.productName}</h3>
+                                    <p className="font-roboto text-xl break-words">
+                                        {item.productDescriptions}
+                                    </p>
 
-            <span className="text-[245px] font-galantic absolute text-black/15 -top-10 z-0">
-                Logitech G29
-            </span>
-            
-            
-            <div className="flex absolute bottom-6 text-5xl gap-20 text-store-secondary/20">
-                <RxDoubleArrowLeft className="hover:text-store-secondary duration-200"/>
-                <RxDoubleArrowRight className="hover:text-store-secondary duration-200"/>
-            </div>
+                                    <div className="flex w-full items-center mt-10 gap-4">
+                                        <span className="text-2xl font-bold font-galantic tracking-widest">{item.price}</span>
+                                        <Button className="flex py-7 px-8 font-roboto font-bold bg-store-orange text-2xl">COMPRAR</Button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex w-[759px] h-[458px] absolute bg-cover top-20 right-52 z-10">
+                            <Image src={product01} alt="" width={1518} height={916} quality={100}
+                                className="flex"
+                            />
+                            </div>
+
+                            <span className="text-[245px] font-galantic absolute text-black/15 -top-20 -translate-x-16  z-0">
+                                {item.productName}
+                            </span>
+                            
+                        </section>
+                        
+                    )
+                })}
+            </Slider>
         </div>
     )
 }
