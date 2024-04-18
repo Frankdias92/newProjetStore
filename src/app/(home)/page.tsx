@@ -4,6 +4,7 @@ import { Header } from "@/components/home/header";
 import { Main } from "@/components/home/main";
 import { Explore } from "@/components/home/explore";
 import { Feature } from "@/components/home/feature";
+import { Footer } from "@/components/home/footer";
 
 
 
@@ -14,6 +15,7 @@ export default function Home() {
         <Main />
         <Explore />
         <Feature />
+        <Footer />
       </section>
   );
 }

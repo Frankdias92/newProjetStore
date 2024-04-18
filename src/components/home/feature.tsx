@@ -11,7 +11,7 @@ export function Feature() {
 
             <div className="flex w-3/4 flex-col justify-center">
 
-                <div className="w-3/5 z-20">
+                <div className="w-3/5 z-30">
                     <h3 className="font-galantic text-5xl mb-12">Logitech G29</h3>
                     <p className="font-roboto text-xl break-words">
                     Melhor volante de entrada pra quem procura algo novo e com garantia. O volante tem um Force Feedback que já dá uma boa noção de como o carro se comporta e os pedais tem embreagem
@@ -24,13 +24,13 @@ export function Feature() {
                 </div>
             </div>
 
-            <div className="flex w-[759px] h-[458px] absolute bg-cover top-20 right-28 z-0">
+            <div className="flex w-[759px] h-[458px] absolute bg-cover top-20 right-28 z-10">
                 <Image src={product01} alt="" width={1518} height={916} quality={100}
                     className="flex"
                 />
             </div>
 
-            <span className="text-[245px] font-galantic absolute text-black/15 -top-10 z-10">
+            <span className="text-[245px] font-galantic absolute text-black/15 -top-10 z-0">
                 Logitech G29
             </span>
             
