@@ -29,10 +29,10 @@ export function Feature() {
         },
         {
             id: 2,
-            productName: 'Test',
-            productDescriptions: 'text Description',
-            price: 'R$ 1817,05',
-            image: product01
+            productName: ' Thrustmaster T300 RS GT Edition',
+            productDescriptions: 'O volante Force Feedback Thrustmaster T300RS GT permite aos jogadores mergulharem verdadeiramente no mundo das corridas de automóveis e aperfeiçoarem as suas técnicas para melhorarem o seu desempenho.',
+            price: 'R$ 3.299,90',
+            image: 'https://images.kabum.com.br/produtos/fotos/150106/volante-e-pedais-thrustmaster-t300-rs-gt-edition-para-pc-ps4-ps3-4160644_1616590119_gg.jpg'
         }
     ]
  
@@ -67,7 +67,7 @@ export function Feature() {
                             />
                             </div>
 
-                            <span className="text-[245px] font-galantic absolute text-black/15 -top-20 -translate-x-16  z-0">
+                            <span className="text-[245px] h-[450px] font-galantic absolute text-black/15 -top-20 -translate-x-16 z-0">
                                 {item.productName}
                             </span>
                             
