@@ -1,19 +1,49 @@
 
 import { Button } from "@nextui-org/react"
 import { useFocusRing } from "@react-aria/focus"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+
+import { api } from "../../services/api"
+
 
 
 export function CreateAccount() {
     let { isFocusVisible, focusProps } = useFocusRing()
 
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const navigate = useRouter()
+    
+
+    function handleSingUp() {
+        // console.log(name, email, password)
+
+        if (!name || !email || !password) {
+            alert('Preencha todos os campos!')
+        }
+
+        api.post('/users', { name, email, password })
+        .then(() => {
+            alert('Usuário cadastrado com sucesso!')
+            navigate.push('/login')
+        })
+        .catch(error => {
+            if(error.response) {
+                alert(error.response.data.message)
+            } else {
+                alert('Não foi possivel cadastrar')
+            }
+        })
+    }
+
     
 
     return (
-        <>
-            <div>
-                <h1 className="text-2xl font-bold">Welcome back!</h1>
-                <p className="font-poppins">Please login to your account.</p>
-            </div>
+        <section className="flex flex-col w-[320px] py-20 items-center">
+            <h1 className="text-2xl w-full ml-6 mb-5 font-bold">Criar conta!</h1>
             
             <form 
                 // method="POST"
@@ -26,8 +56,9 @@ export function CreateAccount() {
                 <input 
                     name="name"  
                     type="text"
+                    onChange={event => setName(event.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-explore-color-text-first focus:ring-2 focus:ring-explore-color-offShore
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-orange focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
@@ -38,8 +69,9 @@ export function CreateAccount() {
                 <input 
                     name="email"  
                     type="text"
+                    onChange={event => setEmail(event.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-explore-color-text-first focus:ring-2 focus:ring-explore-color-offShore
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-orange focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
@@ -48,15 +80,17 @@ export function CreateAccount() {
                 </label>
                 <input 
                     name="password"  
-                    type="text"
+                    type='text'
+                    onChange={event => setPassword(event.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-explore-color-text-first focus:ring-2 focus:ring-explore-color-offShore
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-orange focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
                 <Button
                     type="button"
-                    className="flex text-xl w-full h-[62px] tracking-widest font-bold justify-center px-12 py-5 bg-explore-color-offShore rounded-xl mt-6 shadow-lg antialiased
+                    onClick={handleSingUp}
+                    className="flex text-xl w-full h-[62px] tracking-widest font-bold justify-center px-12 py-5 bg-store-orange rounded-xl mt-6 shadow-lg antialiased
                     outline-none border-0 focus:ring-2 focus:ring-explore-color-text-second"
                         style={{
                             outline: isFocusVisible ? 'rgb(245 157 26)' : 'none',
@@ -65,6 +99,6 @@ export function CreateAccount() {
                     Login
                 </Button>
             </form>
-        </>
+        </section>
     )
 }
