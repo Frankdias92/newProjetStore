@@ -4,11 +4,9 @@ import localFont from 'next/font/local'
 import "./globals.css";
 
 import { Providers } from "./providers";
-import { Header } from "@/components/home/header";
-import { Footer } from "@/components/home/footer";
 
 const inter = Inter({ subsets: ["latin"] });
-const montserrat = Roboto({ subsets: ["latin"], weight: ["300"], variable: '--font-roboto' })
+const roboto = Roboto({ subsets: ["latin"], weight: ["300"], variable: '--font-roboto' })
 const draco = localFont({
   src: './fonts/Draco.otf',
   variable: '--font-draco'
@@ -36,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className='dark'>
-      <body className={`${inter.className} ${draco.variable} ${decking.variable} ${galantic.variable}`}>
+      <body className={`${inter.className} ${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable}`}>
         <Providers>
           {children}
         </Providers>
