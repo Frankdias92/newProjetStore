@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
-
 import { ProviderAdm } from "./providers";
+
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ subsets: ["latin"], weight: ["300"], variable: '--font-roboto' })

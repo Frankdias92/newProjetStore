@@ -1,11 +1,11 @@
 
+
 import { Button } from "@nextui-org/react"
 import { useFocusRing } from "@react-aria/focus"
-import { useState } from "react"
 import { useRouter } from "next/navigation"
 
 import { api } from "../../services/api"
-
+import { useState } from "react"
 
 
 export function CreateAccount() {
@@ -38,6 +38,7 @@ export function CreateAccount() {
             }
         })
     }
+
 
     
 
