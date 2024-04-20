@@ -3,7 +3,6 @@
 import { ButtonText } from "@/components/detailsAdmin/buttonText";
 import { InputForm } from "@/components/inputForm";
 import { Avatar } from "@nextui-org/react";
-import { FaArrowLeft } from "react-icons/fa";
 import { MdAddAPhoto } from "react-icons/md";
 
 export default function Profile() {
@@ -11,9 +10,6 @@ export default function Profile() {
     return (
         <section className="flex w-full min-h-screen justify-center py-10">
             <div className="flex flex-col w-3/4 items-center">
-                <header className="flex w-full items-center px-10 h-20 justify-between rounded-2xl bg-store-primary/80">
-                    <FaArrowLeft className="cursor-pointer hover:text-store-orange duration-75"/>
-                </header>
 
                 <span className="relative flex pt-4 -translate-y-1/4">
                     <Avatar 

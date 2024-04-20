@@ -3,9 +3,10 @@
 import { ButtonText } from "@/components/detailsAdmin/buttonText";
 import { Section } from "@/components/detailsAdmin/section";
 import { Tags } from "@/components/detailsAdmin/tags";
+import Link from "next/link";
 
 
-export default function DefaultAdmin() {
+export default function ProductId() {
 
     return (
         <div className="flex w-full flex-col items-center min-h-screen py-10">
@@ -44,9 +45,9 @@ export default function DefaultAdmin() {
                             </Section>
                         </div>
 
-                        <button>
+                        <Link href={'/detailsAdmin/home'}>
                             Voltar
-                        </button>
+                        </Link>
 
                     </div>
 

@@ -1,10 +1,12 @@
 
 import { Button } from "@nextui-org/react"
 import { useFocusRing } from "@react-aria/focus"
+import { useRouter } from "next/navigation"
 
 
 export function LogginAccount() {
     let { isFocusVisible, focusProps } = useFocusRing()
+    const router = useRouter()
 
 
     return (
@@ -44,6 +46,7 @@ export function LogginAccount() {
 
                 <Button
                     type="button"
+                    onClick={() => router.push('/detailsAdmin/home')}
                     className="flex text-xl w-full h-[62px] tracking-widest font-bold justify-center px-12 py-5 bg-explore-color-offShore rounded-xl mt-6 shadow-lg antialiased
                     outline-none border-0 focus:ring-2 focus:ring-store-orange"
                         style={{
