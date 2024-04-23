@@ -7,9 +7,9 @@ import {NextUIProvider} from '@nextui-org/react'
 export function ProviderStore({children}: { children: React.ReactNode }) {
   return (
     <NextUIProvider>
-      <Header />
-      {children}
-      <Footer />
+        <Header />
+          {children}
+        <Footer />
     </NextUIProvider>
   )
 }

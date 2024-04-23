@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import localFont from 'next/font/local'
-
+import './globals.css'
 import { ProviderStore } from "./providers";
 
 
@@ -23,7 +23,7 @@ const galantic = localFont({
 
 export const metadata: Metadata = {
   title: "Adriel Machado 999",
-  description: "Sua loja virtual",
+  description: "Area do adm",
 };
 
 

@@ -1,9 +1,12 @@
+'use client'
 
 import { useAuth } from "@/hooks/auth"
 import { Button } from "@nextui-org/react"
 import { useFocusRing } from "@react-aria/focus"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import {  useState } from "react"
+
+
 
 
 export function LogginAccount() {
@@ -13,12 +16,15 @@ export function LogginAccount() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    
+
     const { singIn } = useAuth()
+    // console.log('user context:', user)
     
-    function handleSignIn() {
-        singIn({ email, password })
-    }
+
+    const handleSignIn = async () => {
+        singIn({ email, password });
+    };
+    
 
     return (
         <>
@@ -50,7 +56,7 @@ export function LogginAccount() {
                 </label>
                 <input 
                     name="password"  
-                    type="text"
+                    type="password"
                     onChange={e => setPassword(e.target.value)}
                     required
                     className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-explore-color-text-first focus:ring-2 focus:ring-explore-store-orange
