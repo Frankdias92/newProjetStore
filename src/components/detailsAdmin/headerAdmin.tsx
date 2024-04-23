@@ -1,11 +1,13 @@
 'use client'
 
+import { useAuth } from "@/hooks/auth";
 import { Avatar } from "@nextui-org/react";
 import Link from "next/link";
 import { FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
 
 
 export function HeaderAdm() {
+    const { singOut } = useAuth()
 
     return (
         <header className="flex w-full py-10 mb-10 ml-auto">
@@ -28,7 +30,10 @@ export function HeaderAdm() {
                     <Link href={'/'}>Loja</Link>
                 </div>
 
-                <FaSignOutAlt className="text-2xl justify-self-end opacity-70 cursor-pointer hover:text-store-orange hover:scale-110 duration-75"/>
+                <button onClick={singOut} className="justify-self-end">
+                    <FaSignOutAlt className="text-2xl  opacity-70 cursor-pointer hover:text-store-orange hover:scale-110 duration-75"
+                    />
+                </button>
                 
             </section>
         </header>

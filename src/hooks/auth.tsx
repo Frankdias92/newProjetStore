@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 interface SingInProps {
     email: string
     password: string
-    
 }
 
 export interface User {
@@ -16,12 +15,17 @@ export interface User {
     password: string
 }
 
-export interface SignInProps {
-    email: string;
-    password: string;
+interface AuthContextProps {
+    singIn: (SingInProps: SingInProps) => void
+    singOut: () => void
+    user: User | null
 }
 
-export const AuthContext = createContext({})
+export const AuthContext = createContext<AuthContextProps>({
+    singIn: () => {},
+    singOut: () => {},
+    user: null
+})
 
 
 function AuthProvider({ children }: any) {
@@ -29,12 +33,17 @@ function AuthProvider({ children }: any) {
         user: null,
         token: null,
     })
-    const [userIsActive, setUserIsActive] = useState()
+    const [userIsActive, setUserIsActive] = useState<boolean | string>(false)
 
     const router = useRouter()
     
     
-    // console.log('print data: ', data.user)
+    function singOut() {
+        localStorage.removeItem('@store999:user')
+        localStorage.removeItem('@store999:token')
+
+        setData({user: null, token: null})
+    }
     
     async function singIn({ email, password}: SingInProps) {
 
@@ -42,7 +51,9 @@ function AuthProvider({ children }: any) {
             const response = await api.post('http://localhost:3333/sessions', { email, password })
             const { user, token } = response.data
 
-            api.defaults.headers.authorization = `Bearer ${token}`
+            // api.defaults.headers.authorization = `Bearer ${token}`
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
             
             localStorage.setItem('@store999:user', JSON.stringify(user))
             localStorage.setItem('@store999:token', token)
@@ -68,7 +79,7 @@ function AuthProvider({ children }: any) {
         const user = localStorage.getItem('@store999:user')
 
         if(token && user) {
-            api.defaults.headers.authorization = `Bearer ${token}`
+            api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
             setData({
                 token,
@@ -93,7 +104,11 @@ function AuthProvider({ children }: any) {
 
     
     return (
-        <AuthContext.Provider value={{ singIn, user: data.user }}>
+        <AuthContext.Provider value={{ 
+            singIn,
+            singOut,
+            user: data.user
+        }}>
             
             {userIsActive ? `Logado!` : 'nao logado'}
             {children}
