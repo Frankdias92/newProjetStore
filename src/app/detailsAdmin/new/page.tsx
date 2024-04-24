@@ -6,7 +6,7 @@ import { Section } from "@/components/detailsAdmin/section";
 import { TextArea } from "@/components/detailsAdmin/textArea";
 import { InputForm } from "@/components/inputForm";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, SetStateAction, useState } from "react";
 
 
 interface ProductsProps {
@@ -27,35 +27,43 @@ export default function NewProduct() {
     const [description, setDescription] = useState<string>('')
     const [price, setPrice] = useState<string>('')
     const [urlProduct, setUrlProduct] = useState<string>('')
-    const [tags, setTags] = useState<string[] | string[0]>([])
-    
-    const [newProduct, setNewProduct] = useState<ProductsProps>({
-        id: '',
-        title: '',
-        description: '',
-        tags: '',
-        price: '',
-        urlProduct: ''
-    })
 
-    function handleNewTags(e: FormEvent<HTMLFormElement>) {
-        setTags(e.currentTarget.value)
+    const [tags, setTags] = useState<string[]>([])
+    const [newTags, setNewTags] = useState('')
+
+    
+    // const [newProduct, setNewProduct] = useState<ProductsProps>({
+    //     id: '',
+    //     title: '',
+    //     description: '',
+    //     tags: '',
+    //     price: '',
+    //     urlProduct: ''
+    // })
+    
+    function handleAddTags() {
+        setTags(prevState => [...prevState, newTags])
+
+        setNewTags('')
+    }
+    
+    function handleRemoveTag(deleted) {
+        setTags(prevState => prevState.filter(item => item !== deleted))
+
     }
     
     
-    
-    
     function handleAddProduct() {
-        setProducts(prevState => [...prevState, newProduct])
+        // setProducts(prevState => [...prevState, newProduct])
 
-        setNewProduct({
-            id: '',
-            title,
-            description,
-            tags,
-            price,
-            urlProduct
-        })
+        // setNewProduct({
+        //     id: '',
+        //     title,
+        //     description,
+        //     tags,
+        //     price,
+        //     urlProduct
+        // })
 
         // console.log(newProduct)
     }
@@ -73,7 +81,7 @@ export default function NewProduct() {
                 </span>
 
                 <form className="flex flex-col w-full m-auto gap-4">
-                    <input 
+                    <input
                         type="text"
                         placeholder="Nome"
                         name='title'
@@ -115,17 +123,23 @@ export default function NewProduct() {
 
                     <Section title="Adionar Tags">
                         <div className="grid grid-cols-2 gap-4">
-                        <input 
-                            type="text" 
-                            value={tags}
-                            className="focus:ring-2 focus:ring-store-orange  flex w-full h-14 mb-2 pl-4 
-                            invalid:text-red-600 rounded-lg outline-none border-0 placeholder:opacity-30"
-                            onChange={(e) => setTags(e.target.value)}
-                        />
+                            {tags.map((item, index) => {
+                                return (
+                                    <NewItem 
+                                        key={String(index)}
+                                        value={item}
+                                        onClick={() => handleRemoveTag(item)}
+                                        // placeholder='tag...'
+                                    />
+                                )
+                            })}
+
                             <NewItem 
-                                value=""
-                                placeholder='...'
                                 isNew
+                                value={newTags}
+                                placeholder='tag...'
+                                onChange={(e) => setNewTags(e.target.value)}
+                                onClick={handleAddTags}
                             />
                         </div>
                     </Section>

@@ -7,7 +7,7 @@ interface NewItemProps {
     value?: string
     onClick?: () => void
     placeholder?: string 
-    onChange?: () => void | string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export function NewItem({ isNew, value, onClick, onChange, ...rest}: NewItemProps) {
@@ -18,9 +18,9 @@ export function NewItem({ isNew, value, onClick, onChange, ...rest}: NewItemProp
                 type="text" 
                 value={value}
                 readOnly={!isNew}
-                className={`${isNew ? 'focus:ring-2 focus:ring-store-orange' : 'bg-transparent ring-1 ring-store-secondary/35'} flex w-full h-14 mb-2 pl-4 
+                className={`${isNew ? 'focus:ring-2 focus:ring-store-orange' : ' ring-1 ring-store-secondary/35'} flex w-full h-14 mb-2 pl-4 
                 invalid:text-red-600 rounded-lg outline-none border-0 placeholder:opacity-30`}
-                onChange={onChange => (onChange.target.value)}
+                onChange={onChange}
                 {...rest}
             />
 
