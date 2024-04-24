@@ -133,6 +133,7 @@ function AuthProvider({ children }: any) {
         if (userIsActive && data.user) {
             router.push('/detailsAdmin/home')
         } else {
+            router.push('/login')
             console.log('desativado')
         }
     }, [router, userIsActive, data])

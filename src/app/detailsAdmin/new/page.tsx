@@ -3,10 +3,11 @@
 import { ButtonText } from "@/components/detailsAdmin/buttonText";
 import { NewItem } from "@/components/detailsAdmin/newItem";
 import { Section } from "@/components/detailsAdmin/section";
-import { TextArea } from "@/components/detailsAdmin/textArea";
-import { InputForm } from "@/components/inputForm";
+import { api } from "@/services/api";
+// import { TextArea } from "@/components/detailsAdmin/textArea";
+// import { InputForm } from "@/components/inputForm";
 import Link from "next/link";
-import { FormEvent, SetStateAction, useState } from "react";
+import {  useState } from "react";
 
 
 interface ProductsProps {
@@ -47,25 +48,21 @@ export default function NewProduct() {
         setNewTags('')
     }
     
-    function handleRemoveTag(deleted) {
+    function handleRemoveTag(deleted: string) {
         setTags(prevState => prevState.filter(item => item !== deleted))
 
     }
     
     
-    function handleAddProduct() {
-        // setProducts(prevState => [...prevState, newProduct])
-
-        // setNewProduct({
-        //     id: '',
-        //     title,
-        //     description,
-        //     tags,
-        //     price,
-        //     urlProduct
-        // })
-
-        // console.log(newProduct)
+    async function handleAddProduct() {
+        await api.post('http://localhost:3333/products', {
+            title,
+            description,
+            tags,
+            price,
+            urlProduct
+        })
+        alert('Produto adicionado com sucesso!')
     }
 
 
