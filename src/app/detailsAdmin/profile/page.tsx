@@ -45,7 +45,7 @@ export default function Profile() {
 
         
         console.log('click on update')
-        await updateProfile({ user, avatarFile })
+        updateProfile({ user, avatarFile })
     }
 
     function handleUptadeAvatar(e: FormEvent<HTMLInputElement>) {
@@ -57,7 +57,6 @@ export default function Profile() {
             setAvatar(imagePreview)
         }
     }
-    console.log('show avatar', avatar)
     
 
     return (

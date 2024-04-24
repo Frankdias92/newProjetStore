@@ -131,11 +131,9 @@ function AuthProvider({ children }: any) {
 
     useEffect(() => {
         if (userIsActive && data.user) {
-            console.log('ativado effect')
             router.push('/detailsAdmin/home')
         } else {
             console.log('desativado')
-            router.push('/login')
         }
     }, [router, userIsActive, data])
 
