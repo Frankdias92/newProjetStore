@@ -12,18 +12,32 @@ interface SingInProps {
 export interface User {
     name: string
     email: string
+    avatar?: string
     password: string
 }
 
 interface AuthContextProps {
     singIn: (SingInProps: SingInProps) => void
     singOut: () => void
+    updateProfile: (user: UpdateProfileProps) => void
     user: User | null
+}
+
+interface UpdateProfileProps {
+    user: {
+        id?: string
+        name: string
+        email: string
+        avatar?: string
+        password: string
+    }
+    avatarFile?: File | string
 }
 
 export const AuthContext = createContext<AuthContextProps>({
     singIn: () => {},
     singOut: () => {},
+    updateProfile: () => {},
     user: null
 })
 
@@ -36,7 +50,6 @@ function AuthProvider({ children }: any) {
     const [userIsActive, setUserIsActive] = useState<boolean | string>(false)
 
     const router = useRouter()
-    
     
     function singOut() {
         localStorage.removeItem('@store999:user')
@@ -74,6 +87,30 @@ function AuthProvider({ children }: any) {
         }
     }
 
+    async function updateProfile({ user, avatarFile }: UpdateProfileProps) {
+        try {
+
+            if (avatarFile) {
+                const fileUpload = new FormData()
+                fileUpload.append('avatar', avatarFile)
+
+                const response = await api.patch('/users/avatar', fileUpload)
+                user.avatar = response.data.avatar
+            }
+
+            
+            await api.put('users', user)
+            localStorage.setItem('@store999:user', JSON.stringify(user))
+
+            setData({ user, token: data.token })
+            alert('Perfil atualizado')
+        } catch (error) {
+            if (error) {
+                alert('Erro ao atualizar perfil')
+            }
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('@store999:token')
         const user = localStorage.getItem('@store999:user')
@@ -107,6 +144,7 @@ function AuthProvider({ children }: any) {
         <AuthContext.Provider value={{ 
             singIn,
             singOut,
+            updateProfile,
             user: data.user
         }}>
             
