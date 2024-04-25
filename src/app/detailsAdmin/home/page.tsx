@@ -1,19 +1,85 @@
+'use client'
+
+import { ButtonText } from "@/components/detailsAdmin/buttonText"
 import { Section } from "@/components/detailsAdmin/section"
 import { Tags } from "@/components/detailsAdmin/tags"
+import { api } from "@/services/api"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { FaEdit, FaTrash } from "react-icons/fa"
+
+interface TagsProps {
+    id: string
+    name: string
+    product_id: string
+    user_id: string
+}
+
+interface TagSelectedProps {
+    name: string
+}
 
 
 export default function HomePainel() {
+    const [tags, setTags] = useState<TagsProps[]>([])
+    const [tagsSelected, setTagsSelected] = useState<TagSelectedProps[]>([])
+
+
+
+    function handleTagSelected(tagName:any) {
+        const alreadySelected = tagsSelected.includes(tagName);
+
+        console.log(alreadySelected)
+    
+        if (alreadySelected) {
+            const filteredTags = tagsSelected.filter(tags => tags !== tagName);
+            setTagsSelected(filteredTags);
+        } else {
+            setTagsSelected(prevState => [ ...prevState, tagName ]);
+        }
+    }
+
+    useEffect(() => {
+        async function fetchTags() {
+            const response = await api.get('/tags')
+            setTags(response.data)
+        }
+        
+        fetchTags()
+    },[])
+    
+    
 
     return (
         <section className="flex w-3/4 m-auto py-10 min-h-screen justify-center relative">
             <aside className="flex flex-col justify-between w-1/4 rounded-tl-3xl rounded-bl-3xl bg-store-bgDasboard-Secondary z-0 px-6 py-10 gap-4">
                 <h1 className="text-xl font-bold">Dashboard</h1>
                 <ul className="space-y-2 font-roboto font-thin">
-                    <li className="w-full hover:scale-110 duration-75 hover:translate-x-5 hover:italic hover:drop-shadow-2xl">Todos</li>
-                    <li className="w-full hover:scale-110 duration-75 hover:translate-x-5 hover:italic hover:drop-shadow-2xl">Volantes</li>
-                    <li className="w-full hover:scale-110 duration-75 hover:translate-x-5 hover:italic hover:drop-shadow-2xl">etc</li>
+                    <li 
+                        className="w-full hover:scale-110 duration-75 hover:translate-x-5 hover:italic hover:drop-shadow-2xl"
+                    >
+                        <ButtonText 
+                            title="Todos"
+                            onClick={() => handleTagSelected(tags)}
+                            isActive={tagsSelected.length === 0}
+                        />
+                    </li>
+                    
+                    {tags && tags.map(item => {
+                        return (
+                            <li 
+                            key={item.id}
+                            className="w-full hover:scale-110 duration-75 hover:translate-x-5 hover:italic hover:drop-shadow-2xl"
+                            >
+                                <ButtonText 
+                                    title={item.name}
+                                    onClick={() => handleTagSelected(item.name)}
+                                    isActive={tagsSelected.includes(item.name)}
+                                />
+                            </li>
+
+                        )
+                    })}
                 </ul>
 
                 <Link 

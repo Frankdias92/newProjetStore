@@ -32,15 +32,8 @@ export default function NewProduct() {
     const [tags, setTags] = useState<string[]>([])
     const [newTags, setNewTags] = useState('')
 
-    
-    // const [newProduct, setNewProduct] = useState<ProductsProps>({
-    //     id: '',
-    //     title: '',
-    //     description: '',
-    //     tags: '',
-    //     price: '',
-    //     urlProduct: ''
-    // })
+
+
     
     function handleAddTags() {
         setTags(prevState => [...prevState, newTags])
@@ -55,6 +48,14 @@ export default function NewProduct() {
     
     
     async function handleAddProduct() {
+        if (!title) {
+            return alert('Digite o nome do produto!')
+        }
+
+        if (newTags) {
+            return alert('Adicione a tag do produto, ou descarte.')
+        }
+        
         await api.post('http://localhost:3333/products', {
             title,
             description,
