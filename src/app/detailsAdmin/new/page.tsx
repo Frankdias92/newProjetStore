@@ -67,9 +67,9 @@ export default function NewProduct() {
 
 
     return (
-        <section className="flex flex-col items-center w-full justify-center">
+        <section className="flex flex-col items-center w-full justify-center pb-20">
             
-            <main className="flex flex-col w-1/3 gap-6">
+            <main className="flex flex-col w-[40%] gap-6 rounded-xl bg-store-bgDasboard p-20">
                 <span className="flex w-full items-center justify-between mb-6">
                     <h1 className="font-galantic tracking-widest text-2xl">Adicionar produto</h1>
                     <Link href={'/detailsAdmin/home'}>

@@ -19,7 +19,10 @@ const config: Config = {
       colors: {
         "store-primary": "#1E1E1E",
         "store-secondary": "#F4EDE8",
-        "store-orange": "#F59D1A"
+        "store-orange": "#F59D1A",
+        "store-bgDasboard": "#141414",
+        "store-bgDasboard-Secondary": "#262626",
+        "store-dashboard-btn": "#1AC821",
       },
       fontFamily: {
         draco: ['var(--font-draco)'],
