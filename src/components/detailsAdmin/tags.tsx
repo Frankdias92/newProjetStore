@@ -4,11 +4,13 @@ interface TagsProps {
     title: string
 }
 
-export function Tags({ title }:TagsProps) {
+export function Tags({ title, ...rest }:TagsProps) {
 
     return (
-        <span className="flex w-fit px-3 py-1 bg-store-orange rounded-xl">
+        <div className="flex w-fit px-3 py-1 bg-store-orange rounded-xl" 
+            {...rest}
+        >
             {title}
-        </span>
+        </div>
     )
 }

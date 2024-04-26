@@ -1,6 +1,7 @@
 'use client'
 
 import { ButtonText } from "@/components/detailsAdmin/buttonText"
+import { Products } from "@/components/detailsAdmin/products"
 import { Section } from "@/components/detailsAdmin/section"
 import { Tags } from "@/components/detailsAdmin/tags"
 import { api } from "@/services/api"
@@ -19,11 +20,21 @@ interface TagSelectedProps {
     name: string
 }
 
+export interface ProductsProps {
+    id: number
+    title: string
+    description: string
+    price: number
+    urlProduct: string
+    user_id: number
+}
 
 export default function HomePainel() {
+    const [search, setSearch] = useState('')
+    const [products, setProducts] = useState<ProductsProps[]>([])
+    
     const [tags, setTags] = useState<TagsProps[]>([])
     const [tagsSelected, setTagsSelected] = useState<TagSelectedProps[]>([])
-
 
 
     function handleTagSelected(tagName:any) {
@@ -47,6 +58,16 @@ export default function HomePainel() {
         
         fetchTags()
     },[])
+    
+    useEffect(() => {
+        async function fetchProducts() {
+            const response = await api.get(`/products?title=${search}&tags=${tagsSelected}`)
+            setProducts(response.data)
+        }
+
+        fetchProducts()
+    },[tagsSelected, search])
+    
     
     
 
@@ -93,25 +114,57 @@ export default function HomePainel() {
             </aside>
 
             <main className="flex flex-col w-3/4 rounded-3xl bg-store-bgDasboard z-10 -translate-x-6 px-6 py-10">
-                <input type="search" placeholder="Procurar" className="w-2/6 py-2 pl-4 rounded-md"/>
+                <input 
+                    type="search" 
+                    placeholder="Procurar" 
+                    className="w-2/6 py-2 pl-4 rounded-md"
+                    onChange={(e) => setSearch(e.target.value)}
+                />
 
                 <div className="flex flex-col mt-5 gap-4">
-                    <span>Todos os produtos</span>
+                    <span></span>
 
-                    <Link href={`/detailsAdmin/home/${'id'}`} className="flex bg-store-primary/35 rounded-lg px-4 py-2 hover:bg-store-primary/80 duration-75">
-                        <div className="flex flex-col w-full gap-4">
-                            <h2 className="text-xl font-roboto font-bold tracking-wider">
-                                Nome do Produto
-                            </h2>
-                            <Tags title="wheel"/>
-                        </div >
+                    <Section title="Todos os produtos">
 
-                        <span className="flex items-center gap-4">
-                            <FaTrash className="text-red-600 hover:text-red-700 hover:scale-110 duration-75"/>
-                            <FaEdit className="hover:text-green-600 hover:scale-110 duration-75"/>
-                        </span>
+                        {
+                            products.map(product => {
+                                return (
 
-                    </Link>
+
+                                    <Products 
+                                        data={{
+                                             title: 'Name product',
+                                             tags: [
+                                                {id: '1', name: 'store'},
+                                                {id: '2', name: 'wheel'}
+                                             ] 
+                                            }} 
+                                        key={product.id}
+                                    >
+
+                                    </Products>
+                                    // <Link key={product.id} href={`/detailsAdmin/home/${product.id}`} className="flex bg-store-primary/35 rounded-lg px-4 py-2 hover:bg-store-primary/80 duration-75">
+                                    //     <div className="flex flex-col w-full gap-4">
+                                    //         <h2 className="text-xl font-roboto font-bold tracking-wider">
+                                    //             {product.title}
+                                    //         </h2>
+                                    //         <Tags title={product.user_id}/>
+                                    //     </div >
+
+                                    //     <span className="flex items-center gap-4">
+                                    //         <FaTrash className="text-red-600 hover:text-red-700 hover:scale-110 duration-75"/>
+                                    //         <FaEdit className="hover:text-green-600 hover:scale-110 duration-75"/>
+                                    //     </span>
+
+                                    // </Link>
+
+                                )
+                            })
+                        }
+
+                    </Section>
+
+
 
                 </div>
 
