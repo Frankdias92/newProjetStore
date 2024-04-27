@@ -3,11 +3,9 @@
 import { ButtonText } from "@/components/detailsAdmin/buttonText"
 import { Products } from "@/components/detailsAdmin/products"
 import { Section } from "@/components/detailsAdmin/section"
-import { Tags } from "@/components/detailsAdmin/tags"
 import { api } from "@/services/api"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { FaEdit, FaTrash } from "react-icons/fa"
 
 interface TagsProps {
     id: string
@@ -23,10 +21,16 @@ interface TagSelectedProps {
 export interface ProductsProps {
     id: number
     title: string
-    description: string
+    description?: string
     price: number
     urlProduct: string
     user_id: number
+    tags?: {
+        id: number
+        name: string
+        product_id?: number
+        user_id?: number
+    }[]
 }
 
 export default function HomePainel() {
@@ -37,7 +41,7 @@ export default function HomePainel() {
     const [tagsSelected, setTagsSelected] = useState<TagSelectedProps[]>([])
 
 
-    function handleTagSelected(tagName:any) {
+    function handleTagSelected(tagName: any) {
         const alreadySelected = tagsSelected.includes(tagName);
 
         console.log(alreadySelected)
@@ -69,7 +73,7 @@ export default function HomePainel() {
     },[tagsSelected, search])
     
     
-    
+    console.log('products: ', products)
 
     return (
         <section className="flex w-3/4 m-auto py-10 min-h-screen justify-center relative">
@@ -132,16 +136,13 @@ export default function HomePainel() {
 
 
                                     <Products 
-                                        data={{
-                                             title: 'Name product',
-                                             tags: [
-                                                {id: '1', name: 'store'},
-                                                {id: '2', name: 'wheel'}
-                                             ] 
-                                            }} 
                                         key={product.id}
+                                        data={{
+                                             title: product.title,
+                                             tagsData: product.tags
+                                            }} 
                                     >
-
+                                        
                                     </Products>
                                     // <Link key={product.id} href={`/detailsAdmin/home/${product.id}`} className="flex bg-store-primary/35 rounded-lg px-4 py-2 hover:bg-store-primary/80 duration-75">
                                     //     <div className="flex flex-col w-full gap-4">
