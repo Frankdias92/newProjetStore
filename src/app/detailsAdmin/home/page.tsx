@@ -140,8 +140,9 @@ export default function HomePainel() {
 
                         {
                             products.map(product => {
+                                
                                 return (
-                                    <Link key={product.id} href={`/detailsAdmin/home/${product.id}`}>
+                                    <Link key={product.id} href={`/detailsAdmin/home/${product.title}`}>
                                         <Products 
                                             key={String(product.id)}
                                             data={{

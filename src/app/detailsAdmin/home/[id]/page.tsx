@@ -9,7 +9,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ProductsProps } from "../page";
 
-
 interface DataProps {
     id: number
     title: string
@@ -23,24 +22,23 @@ interface DataProps {
         product_id: number
         user_id: number
     }[]
-    
 }
 
 export default function ProductId() {
-    const [data, setData] = useState<DataProps>()
-    
+    const [data, setData] = useState<DataProps>(); // Remove the array brackets
+
     const params = useParams()
 
     useEffect(() => {
         async function fetchProducts() {
-            const response = await api.get(`/products/${params.id}`)
-            setData(response.data)
+            const response = await api.get(`http://localhost:3333/products?user_id=1&id=&title=${params.id}`)
+            const responseData = response.data[0]
+            setData(responseData)
         }
-
+        
         fetchProducts()
-    },[params])
+    }, [params])
     
-    console.log(data)
 
     return (
         <div className="flex w-full flex-col items-center min-h-screen py-10">
@@ -49,15 +47,6 @@ export default function ProductId() {
 
             {data && 
                 <div className="flex flex-col items-center w-[393px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
-                    {/* <Image
-                        isZoomed
-                        width={345}
-                        alt={item.productName}
-                        src={item.image}
-                        className="flex w-[345px] h-[171px]"
-                    /> */}
-
-
                     <div className="flex flex-col gap-3 items-start">
                         <span className="text-4xl font-galantic">
                             {data.title}
@@ -66,7 +55,6 @@ export default function ProductId() {
                             {data.description}
                         </span>
 
-                        
                         <Section title="Tags:">
                             {data.tags && data.tags.map(tag => (
                                 <Tags key={tag.id} title={tag.name} />
@@ -85,14 +73,11 @@ export default function ProductId() {
                     <Link href={'/detailsAdmin/home'}>
                         Voltar
                     </Link>
-
                 </div>
             }
-                
 
-
-                <ButtonText title="Excluir Produto" />
+            <ButtonText title="Excluir Produto" />
             </div>
         </div>
-    )
+    );
 }
