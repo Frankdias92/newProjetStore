@@ -41,11 +41,16 @@ export default function HomePainel() {
     const [tagsSelected, setTagsSelected] = useState<TagSelectedProps[]>([])
 
 
+    
     function handleTagSelected(tagName: any) {
+        if (tagName === 'all') {
+            return setTagsSelected([])
+        }
+        
         const alreadySelected = tagsSelected.includes(tagName);
 
         console.log(alreadySelected)
-    
+        
         if (alreadySelected) {
             const filteredTags = tagsSelected.filter(tags => tags !== tagName);
             setTagsSelected(filteredTags);
@@ -53,7 +58,7 @@ export default function HomePainel() {
             setTagsSelected(prevState => [ ...prevState, tagName ]);
         }
     }
-
+    
     useEffect(() => {
         async function fetchTags() {
             const response = await api.get('/tags')
@@ -68,12 +73,15 @@ export default function HomePainel() {
             const response = await api.get(`/products?title=${search}&tags=${tagsSelected}`)
             setProducts(response.data)
         }
-
+        
         fetchProducts()
     },[tagsSelected, search])
+
+
+
     
-    
-    console.log('products: ', products)
+
+
 
     return (
         <section className="flex w-3/4 m-auto py-10 min-h-screen justify-center relative">
@@ -85,7 +93,7 @@ export default function HomePainel() {
                     >
                         <ButtonText 
                             title="Todos"
-                            onClick={() => handleTagSelected(tags)}
+                            onClick={() => handleTagSelected('all')}
                             isActive={tagsSelected.length === 0}
                         />
                     </li>
@@ -133,32 +141,16 @@ export default function HomePainel() {
                         {
                             products.map(product => {
                                 return (
-
-
-                                    <Products 
-                                        key={product.id}
-                                        data={{
-                                             title: product.title,
-                                             tagsData: product.tags
+                                    <Link key={product.id} href={`/detailsAdmin/home/${product.id}`}>
+                                        <Products 
+                                            key={String(product.id)}
+                                            data={{
+                                                title: product.title,
+                                                tagsData: product.tags
                                             }} 
-                                    >
-                                        
-                                    </Products>
-                                    // <Link key={product.id} href={`/detailsAdmin/home/${product.id}`} className="flex bg-store-primary/35 rounded-lg px-4 py-2 hover:bg-store-primary/80 duration-75">
-                                    //     <div className="flex flex-col w-full gap-4">
-                                    //         <h2 className="text-xl font-roboto font-bold tracking-wider">
-                                    //             {product.title}
-                                    //         </h2>
-                                    //         <Tags title={product.user_id}/>
-                                    //     </div >
-
-                                    //     <span className="flex items-center gap-4">
-                                    //         <FaTrash className="text-red-600 hover:text-red-700 hover:scale-110 duration-75"/>
-                                    //         <FaEdit className="hover:text-green-600 hover:scale-110 duration-75"/>
-                                    //     </span>
-
-                                    // </Link>
-
+                                        />
+                                    </Link>
+                                    
                                 )
                             })
                         }

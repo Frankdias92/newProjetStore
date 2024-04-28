@@ -10,14 +10,12 @@ export interface dataProps {
             name: string
         }[]
     }
-    key: number
 }
 
-export function Products({ data, key,  ...rest }: dataProps) {
+export function Products({ data,  ...rest }: dataProps) {
 
     return (
-        <Link 
-            href={`/detailsAdmin/home/${key}`} 
+        <div
             className="flex bg-store-primary/35 rounded-lg px-4 py-2 hover:bg-store-primary/80 duration-75"
             {...rest}
         >
@@ -48,6 +46,6 @@ export function Products({ data, key,  ...rest }: dataProps) {
                     </span>
             </div >
 
-        </Link>
+        </div>
     )
 }
