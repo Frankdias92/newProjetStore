@@ -5,7 +5,7 @@ import { Section } from "@/components/detailsAdmin/section";
 import { Tags } from "@/components/detailsAdmin/tags";
 import { api } from "@/services/api";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ProductsProps } from "../page";
 
@@ -28,6 +28,17 @@ export default function ProductId() {
     const [data, setData] = useState<DataProps>(); // Remove the array brackets
 
     const params = useParams()
+    const router = useRouter()
+
+    async function handleRemove() {
+        const confirm = window.confirm('Deseja remover a producto?')
+
+        if (confirm) {
+            await api.delete(`/products/${data?.id}`)
+            router.push('/detailsAdmin/home')
+        }
+    }
+    
 
     useEffect(() => {
         async function fetchProducts() {
@@ -76,7 +87,7 @@ export default function ProductId() {
                 </div>
             }
 
-            <ButtonText title="Excluir Produto" />
+            <ButtonText onClick={handleRemove} title="Excluir Produto" />
             </div>
         </div>
     );
