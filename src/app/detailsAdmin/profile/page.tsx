@@ -36,16 +36,16 @@ export default function Profile() {
     const [avatarFile, setAvatarFile] = useState<File | string>('')
 
     async function handleUptade() {
-        const user = {
+        const updated = {
             name,
             email,
             password: passwordNew,
             old_password: passwordOld
         }
 
+        const userUpdated = Object.assign(user, updated)
         
-        console.log('click on update')
-        updateProfile({ user, avatarFile })
+        updateProfile({ user: userUpdated, avatarFile })
     }
 
     function handleUptadeAvatar(e: FormEvent<HTMLInputElement>) {
