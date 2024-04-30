@@ -43,7 +43,7 @@ export function CreateAccount() {
     
 
     return (
-        <section className="flex flex-col w-[320px] py-20 items-center">
+        <section className="flex flex-col w-[320px] items-center">
             <h1 className="text-2xl w-full ml-6 mb-5 font-bold">Criar conta!</h1>
             
             <form 
