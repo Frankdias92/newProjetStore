@@ -4,6 +4,7 @@ import { useAuth } from "@/hooks/auth";
 import { api } from "@/services/api";
 import { Avatar } from "@nextui-org/react";
 import Link from "next/link";
+import { useState } from "react";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
 
 
@@ -12,19 +13,23 @@ export function HeaderAdm() {
     
     const avatarUrl = user?.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : <FaUser />
     const userName = user?.name ? `${user?.name.split(' ')[0]}` : 'user'
-
+    const [userIsActive, setUserIsActive] = useState<boolean | string>(false)
     
     
     return (
         <section className="flex w-full py-10 mb-10 ml-auto bg-store-bgDasboard">
+
             <section className="grid grid-cols-3 w-3/4 items-center justify-center m-auto px-4">
 
-                <Link href={'/detailsAdmin/profile'} className="flex w-fit gap-4 items-center relative">
+                <Link href={'/detailsAdmin/profile'}
+                    className="flex w-fit items-center relative gap-4"
+                >
                     <Avatar
                         src={`${avatarUrl}`}
-                        className="flex absolute w-[80px] h-[80px] rounded-full text-large"
+                        className="flex w-[80px] h-[80px] rounded-full text-large"
                     />
-                    <div className="flex flex-col w-[120px] translate-x-24">
+                    {userName &&  <div className="flex absolute bottom-0 left-16 size-4 bg-store-dashboard-btn rounded-full"/>}
+                    <div className="flex flex-col">
                         <span>Bem vindo,</span>
                         <h2 className="font-thin italic">{userName}!</h2>
                     </div>

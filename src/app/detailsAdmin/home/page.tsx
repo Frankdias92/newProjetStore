@@ -6,6 +6,7 @@ import { Section } from "@/components/detailsAdmin/section"
 import { api } from "@/services/api"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { FaEdit, FaTrash } from "react-icons/fa"
 
 interface TagsProps {
     id: string
@@ -117,9 +118,9 @@ export default function HomePainel() {
 
                 <Link 
                     href={'/detailsAdmin/new'}
-                    className="flex w-full py-5 px-4 items-center rounded-tl-xl rounded-bl-xl bg-store-dashboard-btn hover:bg-store-dashboard-btn/80 hover:drop-shadow-2xl"
+                    className="flex w-full py-5 px-4 items-center rounded-tl-xl rounded-bl-xl bg-store-dashboard-btn/50 hover:bg-store-dashboard-btn/80 hover:drop-shadow-2xl duration-75"
                 >
-                    <span className="font-roboto font-light tracking-widest text-xl ">
+                    <span className="font-roboto font-bold tracking-widest text-xl">
                         Criar
                     </span>
                 </Link>
@@ -142,14 +143,21 @@ export default function HomePainel() {
                             products.map(product => {
                                 
                                 return (
-                                    <Link key={product.id} href={`/detailsAdmin/home/${product.title}`}>
+                                    <Link key={product.id} href={`/detailsAdmin/home/${product.title}`} 
+                                        className="flex flex-row justify-between w-full  rounded-lg px-4 py-2 bg-store-bgDasboard-Secondary/90 hover:bg-store-bgDasboard-Secondary duration-75"
+                                    >
                                         <Products 
                                             key={String(product.id)}
                                             data={{
                                                 title: product.title,
                                                 tagsData: product.tags
                                             }} 
-                                        />
+                                        >
+                                            <span className="flex items-center gap-4 pr-6">
+                                                <FaTrash className="text-red-600 hover:text-red-700 hover:scale-110 duration-75"/>
+                                                <FaEdit className="hover:text-green-600 hover:scale-110 duration-75"/>
+                                            </span>
+                                        </Products>
                                     </Link>
                                     
                                 )

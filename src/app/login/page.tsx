@@ -12,7 +12,7 @@ export default function Login() {
 
     return (
 
-        <section className="flex w-full h-screen flex-col justify-between ">
+        <section className="flex flex-col w-full min-h-screen text-store-secondary  justify-between bg-store-bgDasboard-Secondary">
             <div className="grid grid-cols-2 w-3/4 justify-center items-center m-auto my-[120px]">
                 <div className="flex flex-col w-full px-10 gap-y-8 items-start">
                     <LogginAccount/>
@@ -24,7 +24,6 @@ export default function Login() {
                             className="flex z-0 m-auto bg-center -translate-y-20"
                         />
                     </div>
-
                 </div>
             </div>
         </section>

@@ -52,42 +52,53 @@ export default function ProductId() {
     
 
     return (
-        <div className="flex w-full flex-col items-center min-h-screen py-10">
-            <div className="flex flex-col gap-4 w-3/4 justify-start">
-                <h1>Admin page</h1>
+        <div className="flex w-full flex-col items-center min-h-screen py-10 bg-store-bgDasboard">
+            <div className="flex flex-col items-center gap-4 w-3/4 justify-start">
+                
+                {data && 
+                    <div className="flex flex-col items-center w-3/4 gap-4 h-full px-6 py-10 rounded-3xl bg-store-bgDasboard-Secondary/75 duration-75 relative">
+                        <div className="flex flex-col w-full px-10 gap-3 items-start">
+                            <span className="text-4xl font-roboto font-bold">
+                                {data.title}
+                            </span>
+                            <span className="text-lg font-roboto">
+                                {data.description}
+                            </span>
 
-            {data && 
-                <div className="flex flex-col items-center w-[393px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
-                    <div className="flex flex-col gap-3 items-start">
-                        <span className="text-4xl font-galantic">
-                            {data.title}
-                        </span>
-                        <span className="text-lg font-roboto">
-                            {data.description}
-                        </span>
+                            <Section title="Tags:">
+                                {data.tags && data.tags.map(tag => (
+                                        <Tags key={tag.id} title={tag.name} />
+                                ))}
+                            </Section>
 
-                        <Section title="Tags:">
-                            {data.tags && data.tags.map(tag => (
-                                <Tags key={tag.id} title={tag.name} />
-                            ))}
-                        </Section>
+                            <Section title="urlProduct:">
+                                <span className="text-store-secondary/80">
+                                    {data.urlProduct}
+                                </span>
+                            </Section>
 
-                        <Section title="urlProduct:">
-                            <Tags title={data.urlProduct}/>
-                        </Section>
+                            <Section title="Price">
+                                <span className="text-2xl text-store-secondary/80 font-bold">
+                                    <span className="text-base font-normal">R$:</span> {String(data.price)}
+                                </span>
+                            </Section>
+                        </div>
 
-                        <Section title="Price">
-                            <Tags title={String(data.price)}/>
-                        </Section>
+                        <Link href={'/detailsAdmin/home'}
+                            className="flex w-fit mt-10 py-3 px-7 text-xl items-center rounded-xl hover:drop-shadow-2xl hover:text-store-orange"
+                        >
+                            Voltar
+                        </Link>
+                        
+                        <button 
+                            onClick={handleRemove}
+                            className="absolute flex top-6 right-6 hover:text-red-300"
+                        >
+                            Excluir Produto
+                        </button>
                     </div>
+                }
 
-                    <Link href={'/detailsAdmin/home'}>
-                        Voltar
-                    </Link>
-                </div>
-            }
-
-            <ButtonText onClick={handleRemove} title="Excluir Produto" />
             </div>
         </div>
     );

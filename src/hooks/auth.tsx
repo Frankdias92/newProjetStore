@@ -130,11 +130,10 @@ function AuthProvider({ children }: any) {
 
 
     useEffect(() => {
-        if (userIsActive && data.user) {
+        if (data.user) {
             router.push('/detailsAdmin/home')
         } else {
             router.push('/login')
-            console.log('desativado')
         }
     }, [router, userIsActive, data])
 
@@ -146,8 +145,6 @@ function AuthProvider({ children }: any) {
             updateProfile,
             user: data.user
         }}>
-            
-            {userIsActive ? `Logado!` : 'nao logado'}
             {children}
         </AuthContext.Provider>
     )
