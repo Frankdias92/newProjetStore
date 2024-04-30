@@ -73,8 +73,8 @@ function AuthProvider({ children }: any) {
             
             setData({ user, token })
 
-            if (data && data.user) {
-                router.push('/home')
+            if (user) {
+                router.push('/admin/home')
             } else {
                 console.log('erro ao fazer login')
             }
@@ -131,9 +131,9 @@ function AuthProvider({ children }: any) {
 
     useEffect(() => {
         if (data.user) {
-            router.push('/detailsAdmin/home')
+            router.push('/admin/home')
         } else {
-            router.push('/login')
+            router.push('/admin/login')
         }
     }, [router, userIsActive, data])
 

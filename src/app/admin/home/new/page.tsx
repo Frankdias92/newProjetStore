@@ -1,8 +1,8 @@
 'use client'
 
-import { ButtonText } from "@/components/admin/buttonText";
-import { NewItem } from "@/components/admin/newItem";
-import { Section } from "@/components/admin/section";
+import { ButtonText } from "@/components/detailsAdmin/buttonText";
+import { NewItem } from "@/components/detailsAdmin/newItem";
+import { Section } from "@/components/detailsAdmin/section";
 import { api } from "@/services/api";
 // import { TextArea } from "@/components/admin/textArea";
 // import { InputForm } from "@/components/inputForm";
@@ -93,7 +93,6 @@ export default function NewProduct() {
                 <form className="flex flex-col w-full m-auto gap-4">
                         <input 
                             type="file"
-                            id={`${avatar}`} 
                             name='avatar'
                             className="absolute w-full h-full rounded-full opacity-0 top-0 z-0" 
                             accept="image/png, image/jpeg"

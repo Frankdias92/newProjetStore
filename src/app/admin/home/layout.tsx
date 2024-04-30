@@ -1,8 +1,8 @@
-
+import { HeaderAdm } from "@/components/detailsAdmin/headerAdmin";
+import { AuthProvider } from "@/hooks/auth";
 import { Metadata } from "next";
 
-import {AuthProvider} from '../../hooks/auth'
-import { HeaderAdm } from "@/components/detailsAdmin/headerAdmin";
+
 
 export const metadata: Metadata = {
     title: "Cadastro de produtos",
