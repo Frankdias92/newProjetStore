@@ -1,13 +1,13 @@
 'use client'
 
-import { ButtonText } from "@/components/detailsAdmin/buttonText";
-import { NewItem } from "@/components/detailsAdmin/newItem";
-import { Section } from "@/components/detailsAdmin/section";
+import { ButtonText } from "@/components/admin/buttonText";
+import { NewItem } from "@/components/admin/newItem";
+import { Section } from "@/components/admin/section";
 import { api } from "@/services/api";
-// import { TextArea } from "@/components/detailsAdmin/textArea";
+// import { TextArea } from "@/components/admin/textArea";
 // import { InputForm } from "@/components/inputForm";
 import Link from "next/link";
-import {  useState } from "react";
+import {  FormEvent, useState } from "react";
 
 
 interface ProductsProps {
@@ -17,6 +17,7 @@ interface ProductsProps {
     tags: any
     price: string
     urlProduct: string
+    productIMG: File | string
     user_id?: string
 }
 
@@ -33,6 +34,7 @@ export default function NewProduct() {
     const [newTags, setNewTags] = useState('')
 
 
+    const [productIMG, setProductIMG] = useState<File | string>('')
 
     
     function handleAddTags() {
@@ -61,10 +63,20 @@ export default function NewProduct() {
             description,
             tags,
             price,
-            urlProduct
+            urlProduct,
+            productIMG
         })
         alert('Produto adicionado com sucesso!')
     }
+
+    function handleAddPhotoProduct(e: FormEvent<HTMLInputElement>) {
+        const file = e.currentTarget.files?.[0]
+        if (file) {
+            setProductIMG(file)
+        }
+    }
+    
+    
 
 
     return (
@@ -73,12 +85,21 @@ export default function NewProduct() {
             <main className="flex flex-col w-[40%] gap-6 rounded-xl bg-store-bgDasboard p-20">
                 <span className="flex w-full items-center justify-between mb-6">
                     <h1 className="font-galantic tracking-widest text-2xl">Adicionar produto</h1>
-                    <Link href={'/detailsAdmin/home'}>
+                    <Link href={'/home'}>
                         voltar
                     </Link>
                 </span>
 
                 <form className="flex flex-col w-full m-auto gap-4">
+                        <input 
+                            type="file"
+                            id={`${avatar}`} 
+                            name='avatar'
+                            className="absolute w-full h-full rounded-full opacity-0 top-0 z-0" 
+                            accept="image/png, image/jpeg"
+                            onChange={handleAddPhotoProduct}
+                            
+                        />
                     <input
                         type="text"
                         placeholder="Nome"

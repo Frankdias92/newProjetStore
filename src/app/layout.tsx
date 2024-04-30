@@ -1,4 +1,3 @@
-import { ProviderAdm } from "./providers"
 import { Roboto } from "next/font/google";
 import localFont from 'next/font/local'
 import './globals.css'
@@ -36,9 +35,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable}`}>
         <section>
-          <ProviderAdm>
-            {children}
-          </ProviderAdm>
+          {children}
         </section>
       </body>
     </html>

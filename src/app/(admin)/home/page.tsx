@@ -117,7 +117,7 @@ export default function HomePainel() {
                 </ul>
 
                 <Link 
-                    href={'/detailsAdmin/new'}
+                    href={'/home/new'}
                     className="flex w-full py-5 px-4 items-center rounded-tl-xl rounded-bl-xl bg-store-dashboard-btn/50 hover:bg-store-dashboard-btn/80 hover:drop-shadow-2xl duration-75"
                 >
                     <span className="font-roboto font-bold tracking-widest text-xl">
@@ -143,7 +143,7 @@ export default function HomePainel() {
                             products.map(product => {
                                 
                                 return (
-                                    <Link key={product.id} href={`/detailsAdmin/home/${product.title}`} 
+                                    <Link key={product.id} href={`/home/${product.title}`} 
                                         className="flex flex-row justify-between w-full  rounded-lg px-4 py-2 bg-store-bgDasboard-Secondary/90 hover:bg-store-bgDasboard-Secondary duration-75"
                                     >
                                         <Products 

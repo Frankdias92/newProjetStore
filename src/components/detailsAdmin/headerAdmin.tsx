@@ -21,7 +21,7 @@ export function HeaderAdm() {
 
             <section className="grid grid-cols-3 w-3/4 items-center justify-center m-auto px-4">
 
-                <Link href={'/detailsAdmin/profile'}
+                <Link href={'/home/profile'}
                     className="flex w-fit items-center relative gap-4"
                 >
                     <Avatar
@@ -36,14 +36,14 @@ export function HeaderAdm() {
                 </Link>
 
                 <div className="flex gap-4 justify-self-center font-roboto font-thin tracking-widest text-lg">
-                    <Link href={'/detailsAdmin/home'}
+                    <Link href={'/home'}
                         className="hover:underline underline-offset-8 hover:text-store-orange text-opacity-0 duration-300"
                         >
                             <span className="text-store-secondary">
                                 Inicio
                             </span>
                     </Link>
-                    <Link href={'/detailsAdmin/new'}
+                    <Link href={'/home/new'}
                         className="hover:underline underline-offset-8 hover:text-store-orange text-opacity-0 duration-300"
                         >
                             <span className="text-store-secondary">

@@ -1,7 +1,7 @@
 'use client'
 
-import { ButtonText } from "@/components/detailsAdmin/buttonText";
-import { InputForm } from "@/components/inputForm";
+
+
 import { useAuth } from "@/hooks/auth";
 import { Avatar } from "@nextui-org/react";
 import { FormEvent, useState } from "react";
@@ -9,6 +9,7 @@ import { FaUser } from "react-icons/fa";
 import { MdAddAPhoto } from "react-icons/md";
 
 import { api } from "@/services/api";
+import { ButtonText } from "@/components/detailsAdmin/buttonText";
 
 
 interface userDataProps {

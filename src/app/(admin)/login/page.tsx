@@ -4,7 +4,7 @@
 import { LogginAccount } from '@/components/login/formLoggin'
 import Image from "next/image"
 
-import bgStore from '../../assets/images/store999.png'
+import bgStore from '../../../assets/images/store999.png'
 
 
 export default function Login() {  

@@ -1,13 +1,12 @@
 'use client'
 
-import { ButtonText } from "@/components/detailsAdmin/buttonText";
-import { Section } from "@/components/detailsAdmin/section";
 import { Tags } from "@/components/detailsAdmin/tags";
+import { Section } from "@/components/detailsAdmin/section";
+
 import { api } from "@/services/api";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ProductsProps } from "../page";
 
 interface DataProps {
     id: number
@@ -35,7 +34,7 @@ export default function ProductId() {
 
         if (confirm) {
             await api.delete(`/products/${data?.id}`)
-            router.push('/detailsAdmin/home')
+            router.push('/home')
         }
     }
     
@@ -84,7 +83,7 @@ export default function ProductId() {
                             </Section>
                         </div>
 
-                        <Link href={'/detailsAdmin/home'}
+                        <Link href={'/home'}
                             className="flex w-fit mt-10 py-3 px-7 text-xl items-center rounded-xl hover:drop-shadow-2xl hover:text-store-orange"
                         >
                             Voltar

@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "@/services/api";
 import { useRouter } from "next/navigation";
 
@@ -74,7 +74,7 @@ function AuthProvider({ children }: any) {
             setData({ user, token })
 
             if (data && data.user) {
-                router.push('/detailsAdmin')
+                router.push('/home')
             } else {
                 console.log('erro ao fazer login')
             }
