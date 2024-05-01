@@ -28,7 +28,7 @@ export function CreateAccount() {
         api.post('/users', { name, email, password })
         .then(() => {
             alert('Usuário cadastrado com sucesso!')
-            navigate.push('/login')
+            navigate.push('/admin/login')
         })
         .catch(error => {
             if(error.response) {
@@ -43,15 +43,15 @@ export function CreateAccount() {
     
 
     return (
-        <section className="flex flex-col w-[320px] items-center">
-            <h1 className="text-2xl w-full ml-6 mb-5 font-bold">Criar conta!</h1>
+        <section className="flex flex-col w-full gap-y-2">
+            <h1 className="text-2xl w-full font-bold">Vamos criar uma nova conta!</h1>
             
             <form 
                 // method="POST"
                 // onSubmit={onSubmit}
-                className="flex flex-col w-full font-poppins lg:w-[90%]"
+                className="flex flex-col w-full font-poppins"
             >
-                <label className="mb-2 text-sm">
+                <label className="text-sm">
                     Your name
                 </label>
                 <input 
@@ -59,7 +59,7 @@ export function CreateAccount() {
                     type="text"
                     onChange={event => setName(event.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-orange focus:ring-2 focus:ring-store-orange
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/20 focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
@@ -72,7 +72,7 @@ export function CreateAccount() {
                     type="text"
                     onChange={event => setEmail(event.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-orange focus:ring-2 focus:ring-store-orange
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/20 focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
@@ -84,7 +84,7 @@ export function CreateAccount() {
                     type='text'
                     onChange={event => setPassword(event.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-orange focus:ring-2 focus:ring-store-orange
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/20 focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
@@ -97,7 +97,7 @@ export function CreateAccount() {
                             outline: isFocusVisible ? 'rgb(245 157 26)' : 'none',
                         }}
                 >
-                    Login
+                    Criar conta
                 </Button>
             </form>
         </section>

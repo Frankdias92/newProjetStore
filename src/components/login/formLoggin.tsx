@@ -22,15 +22,12 @@ export function LogginAccount() {
 
     return (
         <>
-            <div>
-                <h1 className="text-2xl font-bold">Bem vindo a sua loja!</h1>
-                <p className="font-poppins">entre com seu login.</p>
-            </div>
+            <h1 className="text-2xl font-bold mr-auto">Bem vindo a sua loja!</h1>
             
             <form 
                 // method="POST"
                 // onSubmit={onSubmit}
-                className="flex flex-col w-full font-poppins lg:w-[90%]"
+                className="flex flex-col w-full font-poppins"
             >
 
                 <label className="mb-2 text-sm">
@@ -53,7 +50,7 @@ export function LogginAccount() {
                     type="password"
                     onChange={e => setPassword(e.target.value)}
                     required
-                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/20 focus:ring-2 focus:ring-explore-store-orange
+                    className="flex h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/20 focus:ring-2 focus:ring-store-orange
                     invalid:text-red-600 rounded-lg outline-none"
                 />
 
@@ -66,7 +63,7 @@ export function LogginAccount() {
                             outline: isFocusVisible ? 'rgb(245 157 26)' : 'none',
                         }}
                 >
-                    Login
+                    Acessar
                 </Button>
 
             </form>

@@ -21,7 +21,7 @@ export function HeaderAdm() {
 
             <section className="grid grid-cols-3 w-3/4 items-center justify-center m-auto px-4">
 
-                <Link href={'/home/profile'}
+                <Link href={'/admin/home/profile'}
                     className="flex w-fit items-center relative gap-4"
                 >
                     <Avatar

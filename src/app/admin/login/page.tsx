@@ -19,31 +19,41 @@ export default function Login() {
 
     return (
 
-        <section className="flex flex-col w-full min-h-full text-store-secondary  justify-between bg-store-bgDasboard-Secondary">
-            <div className="grid grid-cols-2 w-3/4 justify-center items-center m-auto my-[120px]">
-                <div className="flex flex-col w-full h-full px-10 gap-y-8 items-start">
+        <section className="flex flex-col w-full h-full text-store-secondary  justify-between bg-store-bgDasboard-Secondary">
+            <div className="grid grid-cols-2 w-3/4 h-full m-auto my-[120px]">
+                <div className="flex flex-col w-full h-full items-start pr-10  gap-y-8">
                     { newUser ? ( 
-                        <div>
+                        <div className='flex flex-col w-full gap-y-8 items-center'>
                             <LogginAccount/> 
-                            <button onClick={handleNewUser}>
-                                criar conta
-                            </button>
+                            <span className='w-full text-center opacity-80'>
+                                <Section title='ou'>
+                                    <button onClick={handleNewUser}
+                                        className='m-auto opacity-80 hover:opacity-100 duration-75'
+                                        >
+                                        Criar conta
+                                    </button>
+                                </Section>
+                            </span>
                         </div>
                         
                     ) : (
-                        <div>
+                        <div className='flex flex-col w-full gap-y-8 items-center'>
                             <CreateAccount />
-                            <button onClick={() => setNewUser(true)}>
-                                Login
-                            </button>
+                            <span className='w-full text-center opacity-80'>
+                                <Section title='ou'>
+                                    <button onClick={() => setNewUser(true)} className='m-auto opacity-80 hover:opacity-100 duration-75'>
+                                        Fazer login
+                                    </button>
+                                </Section>
+                            </span>
                         </div>
                     )}
                 </div>
 
-                <div className="flex flex-col min-w-[545px] min-h-[754px] p-10 items-center justify-between relative bg-cover bg-center rounded-xl overflow-hidden">
-                    <div className="min-w-[754px] min-h-full absolute">
+                <div className="grid h-[345px] items-center relative bg-cover  rounded-xl overflow-hidden">
+                    <div className="flex w-full h-full justify-self-center  ">
                         <Image src={bgStore} alt="" width={1980} height={1080} quality={100}
-                            className="flex z-0 m-auto bg-center -translate-y-20"
+                            className="flex justify-self-center m-auto rounded-xl"
                         />
                     </div>
                 </div>
