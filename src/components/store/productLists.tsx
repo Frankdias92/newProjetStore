@@ -14,6 +14,9 @@ interface ProductsProps {
     price: number
     urlProduct: string
     productIMG: string
+    tags?:{
+        name: string
+    }
 
 }
 
@@ -65,8 +68,15 @@ export function ProductList() {
 
         <div className="flex w-full gap-5">
 
-            {/* {JSON.stringify(data)} */}
+            {data.map(item => {
+                return (
+                    <span key={item.id}>
+                        {item.title}
+                    </span>
+                )
+            })}
 
+{/* 
             {data.map((item) => {
                 return (
 
@@ -75,7 +85,7 @@ export function ProductList() {
                                 isZoomed
                                 width={345}
                                 alt={item.title}
-                                src={item.urlProduct}
+                                src={item.productIMG}
                                 className="flex w-[345px] h-[171px]"
                             />
 
@@ -108,7 +118,7 @@ export function ProductList() {
                     
                 )
             })}
-            
+             */}
 
 
             
