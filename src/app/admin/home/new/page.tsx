@@ -4,6 +4,7 @@ import { ButtonText } from "@/components/detailsAdmin/buttonText";
 import { NewItem } from "@/components/detailsAdmin/newItem";
 import { Section } from "@/components/detailsAdmin/section";
 import { api } from "@/services/api";
+import Image from "next/image";
 // import { TextArea } from "@/components/admin/textArea";
 // import { InputForm } from "@/components/inputForm";
 import Link from "next/link";
@@ -17,7 +18,7 @@ interface ProductsProps {
     tags: any
     price: string
     urlProduct: string
-    productIMG: File | string
+    productIMG: string
     user_id?: string
 }
 
@@ -34,7 +35,8 @@ export default function NewProduct() {
     const [newTags, setNewTags] = useState('')
 
 
-    const [productIMG, setProductIMG] = useState<File | string>('')
+    const [productIMG, setProductIMG] = useState<string>('')
+    const [productIMGFile, setProductIMGFile] = useState<File |string>('')
 
     
     function handleAddTags() {
@@ -68,15 +70,17 @@ export default function NewProduct() {
         })
         alert('Produto adicionado com sucesso!')
     }
-
-    function handleAddPhotoProduct(e: FormEvent<HTMLInputElement>) {
+    
+    function handleUploadIMG(e: FormEvent<HTMLInputElement>) {
         const file = e.currentTarget.files?.[0]
+
         if (file) {
-            setProductIMG(file)
+            setProductIMGFile(file)
+    
+            const imagePreview = URL.createObjectURL(file)
+            setProductIMG(imagePreview)
         }
     }
-    
-    
 
 
     return (
@@ -91,14 +95,6 @@ export default function NewProduct() {
                 </span>
 
                 <form className="flex flex-col w-full m-auto gap-4">
-                        <input 
-                            type="file"
-                            name='avatar'
-                            className="absolute w-full h-full rounded-full opacity-0 top-0 z-0" 
-                            accept="image/png, image/jpeg"
-                            onChange={handleAddPhotoProduct}
-                            
-                        />
                     <input
                         type="text"
                         placeholder="Nome"
@@ -107,13 +103,30 @@ export default function NewProduct() {
                             invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
                         onChange={(e) => setTitle(e.target.value)}
                     />
-
+                    
                     <textarea 
                         placeholder="Adicione descrição"
                         className="w-full h-[150px] border-0 p-4 resize-none placeholder:opacity-30
                         order-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
                         invalid:text-red-600 rounded-lg outline-none"
                         onChange={(e) => setDescription(e.target.value)}
+                    />
+
+                    {productIMG && 
+                        <div className="flex w-[150px] h-[150px] justify-self-center  ">
+                            <Image src={productIMG} alt="" width={150} height={150} quality={80}
+                                className="flex justify-self-center m-auto rounded-xl"
+                            />
+                        </div> }
+                    <input 
+                        type="file"
+                        placeholder="Inserir link da imagem"
+                        name='imgProduct'
+                        accept="image/png, image/jpeg"
+                        onChange={handleUploadIMG}
+                        className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
+                            invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
+                        
                     />
 
                     <Section title="Adicionar Link">
