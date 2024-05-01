@@ -83,7 +83,7 @@ export default function ProductId() {
                             </Section>
                         </div>
 
-                        <Link href={'/home'}
+                        <Link href={'/admin/home'}
                             className="flex w-fit mt-10 py-3 px-7 text-xl items-center rounded-xl hover:drop-shadow-2xl hover:text-store-orange"
                         >
                             Voltar
