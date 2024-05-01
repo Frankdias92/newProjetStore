@@ -1,7 +1,27 @@
+'use client'
+
+import { api } from "@/services/api"
 import {Button, Image, ScrollShadow} from "@nextui-org/react"
+import axios from "axios"
+import { stringify } from "querystring"
+import { useEffect, useState } from "react"
 
 
-export function ProductList({variants}: any) {
+interface ProductsProps {
+    id: number
+    title: string
+    description: string
+    price: number
+    urlProduct: string
+    productIMG: string
+
+}
+
+export function ProductList() {
+    const [data, setData] = useState<ProductsProps[]>([])
+
+
+    
     
     const dataFeature = [
         {
@@ -26,29 +46,43 @@ export function ProductList({variants}: any) {
             image: 'https://images.kabum.com.br/produtos/fotos/150106/volante-e-pedais-thrustmaster-t300-rs-gt-edition-para-pc-ps4-ps3-4160644_1616590119_gg.jpg'
         }
     ]
+
+    useEffect(() => {
+        async function handleGetProducts() {
+            const response = await axios.get('http://localhost:3333/allproducts')
+            const data = JSON.stringify(response)
     
+            console.log('products: ', response)
+            setData(response.data)
+        }
+        handleGetProducts()
+
+    }, [])
+
 
     return (
 
 
         <div className="flex w-full gap-5">
 
-            {dataFeature.map((item) => {
+            {/* {JSON.stringify(data)} */}
+
+            {data.map((item) => {
                 return (
 
                     <div key={item.id} className="flex flex-col items-center w-[393px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
                             <Image
                                 isZoomed
                                 width={345}
-                                alt={item.productName}
-                                src={item.image}
+                                alt={item.title}
+                                src={item.urlProduct}
                                 className="flex w-[345px] h-[171px]"
                             />
 
 
                         <div className="flex flex-col gap-3 items-start">
                             <span className="text-4xl font-galantic">
-                                {item.productName}
+                                {item.title}
                             </span>
                             <span className="text-lg font-roboto">
                                 <ScrollShadow 
@@ -57,7 +91,7 @@ export function ProductList({variants}: any) {
                                     orientation="horizontal" 
                                     className="max-w-[393px] max-h-[135px]"
                                 >
-                                    {item.productDescriptions}
+                                    {item.description}
                                 </ScrollShadow>
                             </span>
                             <span className="flex w-full  px-5 justify-between items-center font-galantic tracking-widest text-2xl absolute bottom-5 left-0">
