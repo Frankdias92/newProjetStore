@@ -59,27 +59,22 @@ export default function NewProduct() {
         if (newTags) {
             return alert('Adicione a tag do produto, ou descarte.')
         }
-        
+        // console.log(productIMGFile)
         await api.post('http://localhost:3333/products', {
             title,
             description,
+            urlProduct,
             tags,
             price,
-            urlProduct,
-            productIMG
         })
         alert('Produto adicionado com sucesso!')
     }
     
-    function handleUploadIMG(e: FormEvent<HTMLInputElement>) {
+
+    async function handleUploadIMG(e: FormEvent<HTMLInputElement>) {
         const file = e.currentTarget.files?.[0]
 
-        if (file) {
-            setProductIMGFile(file)
-    
-            const imagePreview = URL.createObjectURL(file)
-            setProductIMG(imagePreview)
-        }
+        await api.post('http://localhost:3333/upload', { file })
     }
 
 
@@ -94,7 +89,9 @@ export default function NewProduct() {
                     </Link>
                 </span>
 
-                <form className="flex flex-col w-full m-auto gap-4">
+                <form 
+                    className="flex flex-col w-full m-auto gap-4"
+                >
                     <input
                         type="text"
                         placeholder="Nome"
@@ -121,7 +118,7 @@ export default function NewProduct() {
                     <input 
                         type="file"
                         placeholder="Inserir link da imagem"
-                        name='imgProduct'
+                        name='productIMG'
                         accept="image/png, image/jpeg"
                         onChange={handleUploadIMG}
                         className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
@@ -175,7 +172,8 @@ export default function NewProduct() {
                         </div>
                     </Section>
 
-                    <ButtonText title="Salvar" onClick={handleAddProduct}/>
+                    <ButtonText title="Salvar" onClick={handleAddProduct} />
+                    <button type="submit">enviar</button>
                     
                 </form>
 

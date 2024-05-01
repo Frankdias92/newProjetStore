@@ -53,9 +53,9 @@ export function ProductList() {
     useEffect(() => {
         async function handleGetProducts() {
             const response = await axios.get('http://localhost:3333/allproducts')
-            const data = JSON.stringify(response)
+            const data = JSON.stringify(response.data)
     
-            console.log('products: ', response)
+            console.log('products: ', response.data)
             setData(response.data)
         }
         handleGetProducts()
