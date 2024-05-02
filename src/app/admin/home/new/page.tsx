@@ -4,6 +4,7 @@ import { ButtonText } from "@/components/detailsAdmin/buttonText";
 import { NewItem } from "@/components/detailsAdmin/newItem";
 import { Section } from "@/components/detailsAdmin/section";
 import { api } from "@/services/api";
+import axios from "axios";
 import Image from "next/image";
 // import { TextArea } from "@/components/admin/textArea";
 // import { InputForm } from "@/components/inputForm";
@@ -35,8 +36,8 @@ export default function NewProduct() {
     const [newTags, setNewTags] = useState('')
 
 
-    const [productIMG, setProductIMG] = useState<string>('')
-    const [productIMGFile, setProductIMGFile] = useState<File |string>('')
+    const [imgProduct, setImgProduct] = useState<string>('')
+    const [productIMG, setProductIMG] = useState<File |string>('')
 
     
     function handleAddTags() {
@@ -52,29 +53,49 @@ export default function NewProduct() {
     
     
     async function handleAddProduct() {
-        if (!title) {
-            return alert('Digite o nome do produto!')
+        try {
+            if (!title) {
+                alert('Digite o nome do produto!');
+                return;
+            }
+    
+            if (newTags) {
+                alert('Adicione a tag do produto, ou descarte.');
+                return;
+            }
+    
+            const formData = new FormData();
+            formData.append('title', title);
+            formData.append('description', description);
+            formData.append('urlProduct', urlProduct);
+            formData.append('price', price);
+            formData.append('productIMG', productIMG);
+    
+            tags.forEach(tag => formData.append('tags', tag));
+    
+            const response = await api.post('http://localhost:3333/products', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+    
+            alert('Produto adicionado com sucesso!');
+        } catch (error) {
+            console.error('Error adding product:', error);
+            alert('Erro ao adicionar o produto. Por favor, tente novamente.');
         }
-
-        if (newTags) {
-            return alert('Adicione a tag do produto, ou descarte.')
-        }
-        // console.log(productIMGFile)
-        await api.post('http://localhost:3333/products', {
-            title,
-            description,
-            urlProduct,
-            tags,
-            price,
-        })
-        alert('Produto adicionado com sucesso!')
     }
     
 
     async function handleUploadIMG(e: FormEvent<HTMLInputElement>) {
         const file = e.currentTarget.files?.[0]
+        console.log(file)
 
-        await api.post('http://localhost:3333/upload', { file })
+        if (file) {
+            setProductIMG(file)
+        } else {
+            console.log('Error: No file selected')
+        }
     }
 
 
@@ -111,7 +132,7 @@ export default function NewProduct() {
 
                     {productIMG && 
                         <div className="flex w-[150px] h-[150px] justify-self-center  ">
-                            <Image src={productIMG} alt="" width={150} height={150} quality={80}
+                            <Image src={imgProduct} alt="" width={150} height={150} quality={80}
                                 className="flex justify-self-center m-auto rounded-xl"
                             />
                         </div> }
