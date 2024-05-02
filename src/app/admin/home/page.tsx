@@ -41,7 +41,7 @@ export default function HomePainel() {
     const [tags, setTags] = useState<TagsProps[]>([])
     const [tagsSelected, setTagsSelected] = useState<TagSelectedProps[]>([])
 
-
+    console.log(products.map(item => item.tags) )
     
     function handleTagSelected(tagName: any) {
         if (tagName === 'all') {
@@ -78,7 +78,13 @@ export default function HomePainel() {
         fetchProducts()
     },[tagsSelected, search])
 
+    async function handleRemove(id: number) {
+        const confirm = window.confirm('Deseja remover a producto?')
 
+        if (confirm) {
+            await api.delete(`/products/${id}`)
+        }
+    }
 
     
 
@@ -144,7 +150,7 @@ export default function HomePainel() {
                                 
                                 return (
                                     <Link key={product.id} href={`/admin/home/${product.title}`} 
-                                        className="flex flex-row justify-between w-full  rounded-lg px-4 py-2 bg-store-bgDasboard-Secondary/90 hover:bg-store-bgDasboard-Secondary duration-75"
+                                        className="flex flex-row justify-between w-full  rounded-lg px-4 py-2 bg-store-bgDasboard-Secondary/90 hover:bg-store-bgDasboard-Secondary duration-75 z-0"
                                     >
                                         <Products 
                                             key={String(product.id)}
@@ -153,8 +159,8 @@ export default function HomePainel() {
                                                 tagsData: product.tags
                                             }} 
                                         >
-                                            <span className="flex items-center gap-4 pr-6">
-                                                <FaTrash className="text-red-600 hover:text-red-700 hover:scale-110 duration-75"/>
+                                            <span className="flex items-center gap-4 pr-6 z-10">
+                                                <FaTrash onClick={() => handleRemove(product.id)} className="text-red-600 hover:text-red-700 hover:scale-110 duration-75"/>
                                                 <FaEdit className="hover:text-green-600 hover:scale-110 duration-75"/>
                                             </span>
                                         </Products>

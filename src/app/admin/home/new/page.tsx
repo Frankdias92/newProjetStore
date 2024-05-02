@@ -79,7 +79,7 @@ export default function NewProduct() {
                 }
             });
     
-            alert('Produto adicionado com sucesso!');
+            return alert('Produto adicionado com sucesso!');
         } catch (error) {
             console.error('Error adding product:', error);
             alert('Erro ao adicionar o produto. Por favor, tente novamente.');
@@ -93,8 +93,9 @@ export default function NewProduct() {
 
         if (file) {
             setProductIMG(file)
-        } else {
-            console.log('Error: No file selected')
+
+            const imagePreview = URL.createObjectURL(file)
+            setImgProduct(imagePreview)
         }
     }
 
@@ -105,7 +106,7 @@ export default function NewProduct() {
             <main className="flex flex-col w-[40%] gap-6 rounded-xl bg-store-bgDasboard p-20">
                 <span className="flex w-full items-center justify-between mb-6">
                     <h1 className="font-galantic tracking-widest text-2xl">Adicionar produto</h1>
-                    <Link href={'/home'}>
+                    <Link href={'/admin/home'}>
                         voltar
                     </Link>
                 </span>
@@ -193,9 +194,7 @@ export default function NewProduct() {
                         </div>
                     </Section>
 
-                    <ButtonText title="Salvar" onClick={handleAddProduct} />
-                    <button type="submit">enviar</button>
-                    
+                    <ButtonText title="Salvar" onClick={handleAddProduct} />                    
                 </form>
 
 

@@ -44,6 +44,7 @@ export default function ProductId() {
             const response = await api.get(`http://localhost:3333/products?user_id=1&id=&title=${params.id}`)
             const responseData = response.data[0]
             setData(responseData)
+            console.log(response)
         }
         
         fetchProducts()
@@ -56,7 +57,7 @@ export default function ProductId() {
                 
                 {data && 
                     <div className="flex flex-col items-center w-3/4 gap-4 h-full px-6 py-10 rounded-3xl bg-store-bgDasboard-Secondary/75 duration-75 relative">
-                        <div className="flex flex-col w-full px-10 gap-3 items-start">
+                        <div className="flex flex-col w-full px-10 gap-7 items-start">
                             <span className="text-4xl font-roboto font-bold">
                                 {data.title}
                             </span>
