@@ -51,7 +51,7 @@ export default function NewProduct() {
 
     }
     
-    
+
     async function handleAddProduct() {
         try {
             if (!title) {
@@ -86,7 +86,6 @@ export default function NewProduct() {
         }
     }
     
-
     async function handleUploadIMG(e: FormEvent<HTMLInputElement>) {
         const file = e.currentTarget.files?.[0]
         console.log(file)

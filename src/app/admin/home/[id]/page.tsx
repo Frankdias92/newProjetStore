@@ -7,6 +7,7 @@ import { api } from "@/services/api";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface DataProps {
     id: number
@@ -14,6 +15,7 @@ interface DataProps {
     description?: string
     price: number
     urlProduct: string
+    productIMG: string
     user_id: number
     tags: {
         id: number
@@ -34,7 +36,7 @@ export default function ProductId() {
 
         if (confirm) {
             await api.delete(`/products/${data?.id}`)
-            router.push('/home')
+            router.push('/admin/home')
         }
     }
     
@@ -61,6 +63,13 @@ export default function ProductId() {
                             <span className="text-4xl font-roboto font-bold">
                                 {data.title}
                             </span>
+                            <Image
+                                width={345}
+                                height={171}
+                                alt={data.title}
+                                src={`${api.defaults.baseURL}/files/${data.productIMG}`}
+                                className="flex w-[345px] h-[171px] rounded-lg overflow-hidden"
+                            />
                             <span className="text-lg font-roboto">
                                 {data.description}
                             </span>

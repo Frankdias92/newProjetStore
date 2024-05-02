@@ -19,7 +19,7 @@ export default function Login() {
 
     return (
 
-        <section className="flex flex-col w-full h-full text-store-secondary  justify-between bg-store-bgDasboard-Secondary">
+        <section className="flex flex-col w-full min-h-screen text-store-secondary  justify-between bg-store-bgDasboard-Secondary">
             <div className="grid grid-cols-2 w-3/4 h-full m-auto my-[120px]">
                 <div className="flex flex-col w-full h-full items-start pr-10  gap-y-8">
                     { newUser ? ( 

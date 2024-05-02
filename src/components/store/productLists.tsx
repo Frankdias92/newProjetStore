@@ -5,6 +5,7 @@ import {Button, Image, ScrollShadow} from "@nextui-org/react"
 import axios from "axios"
 import { stringify } from "querystring"
 import { useEffect, useState } from "react"
+import { Tags } from "../detailsAdmin/tags"
 
 
 interface ProductsProps {
@@ -15,17 +16,15 @@ interface ProductsProps {
     urlProduct: string
     productIMG: string
     tags?:{
+        id: number
         name: string
-    }
+    }[]
 
 }
 
 export function ProductList() {
     const [data, setData] = useState<ProductsProps[]>([])
 
-
-    
-    
     const dataFeature = [
         {
             id: 1,
@@ -49,13 +48,13 @@ export function ProductList() {
             image: 'https://images.kabum.com.br/produtos/fotos/150106/volante-e-pedais-thrustmaster-t300-rs-gt-edition-para-pc-ps4-ps3-4160644_1616590119_gg.jpg'
         }
     ]
+    console.log('products: ', data)
 
     useEffect(() => {
         async function handleGetProducts() {
             const response = await axios.get('http://localhost:3333/allproducts')
             const data = JSON.stringify(response.data)
     
-            console.log('products: ', response.data)
             setData(response.data)
         }
         handleGetProducts()
@@ -68,24 +67,24 @@ export function ProductList() {
 
         <div className="flex w-full gap-5">
 
-            {data.map(item => {
+            {/* {data.map(item => {
                 return (
                     <span key={item.id}>
                         {item.title}
                     </span>
                 )
-            })}
+            })} */}
 
-{/* 
+
             {data.map((item) => {
                 return (
 
-                    <div key={item.id} className="flex flex-col items-center w-[393px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
+                    <div key={item.id} className="flex flex-col items-start w-[393px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
                             <Image
                                 isZoomed
                                 width={345}
                                 alt={item.title}
-                                src={item.productIMG}
+                                src={`${api.defaults.baseURL}/files/${item.productIMG}`}
                                 className="flex w-[345px] h-[171px]"
                             />
 
@@ -93,6 +92,14 @@ export function ProductList() {
                         <div className="flex flex-col gap-3 items-start">
                             <span className="text-4xl font-galantic">
                                 {item.title}
+                            </span>
+                            <span className="flex text-sm font-roboto gap-2">
+                                {item.tags?.map(tag => {
+                                    return (
+                                        <Tags key={tag.id} title={tag.name}/>
+                                        )
+                                    }
+                                )}       
                             </span>
                             <span className="text-lg font-roboto">
                                 <ScrollShadow 
@@ -118,7 +125,7 @@ export function ProductList() {
                     
                 )
             })}
-             */}
+            
 
 
             

@@ -50,7 +50,7 @@ export function HeaderAdm() {
                                 Adicionar
                             </span>
                     </Link>
-                    <Link href={'/admin/store'}
+                    <Link href={'/'}
                         className="hover:underline underline-offset-8 hover:text-store-orange text-opacity-0 duration-300"
                         >
                             <span className="text-store-secondary">

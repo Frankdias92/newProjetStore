@@ -2,7 +2,7 @@
 const nextConfig = {
     images: {
       domains: ['docs.google.com'],
-      domains: ['drive.google.com'],
+      domains: ['localhost'],
     },
 };
 
