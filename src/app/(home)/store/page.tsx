@@ -2,12 +2,12 @@
 
 import { ProductList } from "@/components/store/productLists"
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react"
+import { useEffect, useState } from "react"
 
 
 export default function Store() {
     const variants = [ "underlined"]
 
-    
 
     return (
         <section className="flex w-full min-h-full justify-between py-10">
@@ -22,9 +22,9 @@ export default function Store() {
                         <Tab key="Todos" title="Todos">
                             <Card>
                                 <CardBody>
-                                    <ProductList />
+                                    <ProductList category='todos' />
                                 </CardBody>
-                            </Card>  
+                            </Card>
                         </Tab>
                         <Tab key="Brasil" title="Brasil"/>
                         <Tab key="Logitech" title="Logitech"/>

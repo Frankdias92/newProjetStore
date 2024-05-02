@@ -31,6 +31,7 @@ export default function NewProduct() {
     const [description, setDescription] = useState<string>('')
     const [price, setPrice] = useState<string>('')
     const [urlProduct, setUrlProduct] = useState<string>('')
+    const [category, setCategory] = useState<string>('')
 
     const [tags, setTags] = useState<string[]>([])
     const [newTags, setNewTags] = useState('')
@@ -67,6 +68,7 @@ export default function NewProduct() {
             const formData = new FormData();
             formData.append('title', title);
             formData.append('description', description);
+            formData.append('description', category);
             formData.append('urlProduct', urlProduct);
             formData.append('price', price);
             formData.append('productIMG', productIMG);
@@ -120,6 +122,14 @@ export default function NewProduct() {
                         className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
                             invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
                         onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Categoria do produto"
+                        name='category'
+                        className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
+                            invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
+                        onChange={(e) => setCategory(e.target.value)}
                     />
                     
                     <textarea 

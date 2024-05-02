@@ -86,9 +86,6 @@ export default function HomePainel() {
         }
     }
 
-    
-
-
 
     return (
         <section className="flex w-3/4 m-auto py-10 min-h-screen justify-center relative">

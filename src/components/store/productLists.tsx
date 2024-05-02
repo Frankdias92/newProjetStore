@@ -1,11 +1,10 @@
 'use client'
 
-import { api } from "@/services/api"
 import {Button, Image, ScrollShadow} from "@nextui-org/react"
-import axios from "axios"
-import { stringify } from "querystring"
 import { useEffect, useState } from "react"
 import { Tags } from "../detailsAdmin/tags"
+import { api } from "@/services/api"
+import axios from "axios"
 
 
 interface ProductsProps {
@@ -19,12 +18,17 @@ interface ProductsProps {
         id: number
         name: string
     }[]
-
 }
 
-export function ProductList() {
+interface CategoryProps {
+    category: string
+}
+
+export function ProductList({category}: CategoryProps) {
     const [data, setData] = useState<ProductsProps[]>([])
 
+
+    console.log(category)
     const dataFeature = [
         {
             id: 1,
@@ -48,33 +52,21 @@ export function ProductList() {
             image: 'https://images.kabum.com.br/produtos/fotos/150106/volante-e-pedais-thrustmaster-t300-rs-gt-edition-para-pc-ps4-ps3-4160644_1616590119_gg.jpg'
         }
     ]
-    console.log('products: ', data)
 
     useEffect(() => {
         async function handleGetProducts() {
-            const response = await axios.get('http://localhost:3333/allproducts')
+            const response = await axios.get(`http://localhost:3333/allproducts?${category}`)
             const data = JSON.stringify(response.data)
     
             setData(response.data)
         }
         handleGetProducts()
 
-    }, [])
+    }, [category])
 
 
     return (
-
-
         <div className="flex w-full gap-5">
-
-            {/* {data.map(item => {
-                return (
-                    <span key={item.id}>
-                        {item.title}
-                    </span>
-                )
-            })} */}
-
 
             {data.map((item) => {
                 return (
@@ -125,9 +117,6 @@ export function ProductList() {
                     
                 )
             })}
-            
-
-
             
         </div>
     )
