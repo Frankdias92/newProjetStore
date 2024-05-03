@@ -31,19 +31,19 @@ export default function StoreProductId() {
         <section className="flex flex-col w-full min-h-screen py-10 bg-store-orange">
             <div className="flex flex-col w-3/4 h-full justify-center items-center m-auto">
                 <div className="flex w-full relative z-0">
-                    <div className="flex w-full">
+                    <div className="flex w-fit bg-transparent shadow-large rounded-xl">
                         <Image
                             isZoomed
                             width={1080}
                             height={768}
                             alt={data?.title}
                             src={`${api.defaults.baseURL}/files/${data?.productIMG}`}
-                            className="flex w-full h-[550px] justify-center items-center"
+                            className="flex w-full h-[550px] justify-center items-center  shadow-medium"
                         />
                     </div>
                 
                     <div className="flex flex-col w-[390px] h-[350px] absolute z-10 right-0 top-0 gap-6 translate-y-1/4">
-                        <div className="flex flex-col w-full h-fit bg-store-primary rounded-xl">
+                        <div className="flex flex-col w-full h-fit bg-store-primary rounded-xl shadow-large">
                             <section className="grid grid-cols-2 w-full h-full p-6 gap-4">
                                 <div className="text-center">
                                     <Section title="Produto">
@@ -74,7 +74,7 @@ export default function StoreProductId() {
                         </div>
 
 
-                        <Button className="flex w-full py-8 px-5 m-auto font-draco tracking-widest text-xl hover:text-store-primary bg-store-orange"
+                        <Button className="flex w-full py-8 px-5 m-auto font-draco tracking-widest text-xl hover:text-store-primary bg-store-orange shadow-large"
                             
                         >
                             <Link href={`http://${data?.urlProduct}`} target="_blank">
