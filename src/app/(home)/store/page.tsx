@@ -22,12 +22,24 @@ export default function Store() {
                         <Tab key="Todos" title="Todos">
                             <Card>
                                 <CardBody>
-                                    <ProductList category='todos' />
+                                    <ProductList filterCategory='' />
                                 </CardBody>
                             </Card>
                         </Tab>
-                        <Tab key="Brasil" title="Brasil"/>
-                        <Tab key="Logitech" title="Logitech"/>
+                        <Tab key="Brasil" title="Brasil">
+                            <Card>
+                                <CardBody>
+                                    <ProductList filterCategory='Brasil' />
+                                </CardBody>
+                            </Card>
+                        </Tab>
+                        <Tab key="Logitech" title="Logitech">
+                            <Card>
+                                <CardBody>
+                                    <ProductList filterCategory='Logitech' />
+                                </CardBody>
+                            </Card>
+                        </Tab>
                         <Tab key="Thrustmaster" title="Thrustmaster"/>
                         <Tab key="Volantes" title="Volantes"/>
                         <Tab key="Diversos" title="Diversos"/>

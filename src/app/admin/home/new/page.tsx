@@ -4,6 +4,7 @@ import { ButtonText } from "@/components/detailsAdmin/buttonText";
 import { NewItem } from "@/components/detailsAdmin/newItem";
 import { Section } from "@/components/detailsAdmin/section";
 import { api } from "@/services/api";
+import { Select, SelectItem } from "@nextui-org/react";
 import axios from "axios";
 import Image from "next/image";
 // import { TextArea } from "@/components/admin/textArea";
@@ -12,35 +13,29 @@ import Link from "next/link";
 import {  FormEvent, useState } from "react";
 
 
-interface ProductsProps {
-    id: string
-    title: string
-    description: string
-    tags: any
-    price: string
-    urlProduct: string
-    productIMG: string
-    user_id?: string
-}
-
-
 export default function NewProduct() {
-    const [products, setProducts] = useState<ProductsProps[]>([])
 
     const [title, setTitle] = useState<string>('')
     const [description, setDescription] = useState<string>('')
     const [price, setPrice] = useState<string>('')
     const [urlProduct, setUrlProduct] = useState<string>('')
-    const [category, setCategory] = useState<string>('')
-
     const [tags, setTags] = useState<string[]>([])
     const [newTags, setNewTags] = useState('')
-
+    const [category, setCategory] = useState('')
+    
 
     const [imgProduct, setImgProduct] = useState<string>('')
     const [productIMG, setProductIMG] = useState<File |string>('')
 
-    
+    const categorys = 
+    [
+        'Brasil',
+        'Logitech',
+        'Volantes',
+        'Reposição'
+    ]
+
+
     function handleAddTags() {
         setTags(prevState => [...prevState, newTags])
 
@@ -68,10 +63,10 @@ export default function NewProduct() {
             const formData = new FormData();
             formData.append('title', title);
             formData.append('description', description);
-            formData.append('description', category);
             formData.append('urlProduct', urlProduct);
             formData.append('price', price);
             formData.append('productIMG', productIMG);
+            formData.append('category', category);
     
             tags.forEach(tag => formData.append('tags', tag));
     
@@ -116,22 +111,14 @@ export default function NewProduct() {
                     className="flex flex-col w-full m-auto gap-4"
                 >
                     <input
+                        name='title'
                         type="text"
                         placeholder="Nome"
-                        name='title'
                         className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
                             invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
                         onChange={(e) => setTitle(e.target.value)}
                     />
-                    <input
-                        type="text"
-                        placeholder="Categoria do produto"
-                        name='category'
-                        className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
-                            invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
-                        onChange={(e) => setCategory(e.target.value)}
-                    />
-                    
+
                     <textarea 
                         placeholder="Adicione descrição"
                         className="w-full h-[150px] border-0 p-4 resize-none placeholder:opacity-30
@@ -152,10 +139,25 @@ export default function NewProduct() {
                         name='productIMG'
                         accept="image/png, image/jpeg"
                         onChange={handleUploadIMG}
-                        className="flex w-full h-14 mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
+                        className="flex w-full h-14 items-center justify-center mb-2 pl-4 border-0 bg-transparent ring-1 ring-store-secondary/35 focus:ring-2 focus:ring-store-orange
                             invalid:text-red-600 rounded-lg outline-none placeholder:opacity-30"
-                        
                     />
+
+                    <Section title="Categoria do produto">
+                        <Select 
+                            name="category"
+                            typeof="text"
+                            label="Selecione uma categoria" 
+                            className="w-full"
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            {categorys.map((item) => (
+                            <SelectItem key={item} value={item} >
+                                {item}
+                            </SelectItem>
+                            ))}
+                        </Select>
+                    </Section>
 
                     <Section title="Adicionar Link">
                         <input 

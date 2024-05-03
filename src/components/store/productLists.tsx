@@ -14,6 +14,7 @@ interface ProductsProps {
     price: number
     urlProduct: string
     productIMG: string
+    category: string
     tags?:{
         id: number
         name: string
@@ -21,14 +22,12 @@ interface ProductsProps {
 }
 
 interface CategoryProps {
-    category: string
+    filterCategory: string
 }
 
-export function ProductList({category}: CategoryProps) {
+export function ProductList({filterCategory}: CategoryProps) {
     const [data, setData] = useState<ProductsProps[]>([])
 
-
-    console.log(category)
     const dataFeature = [
         {
             id: 1,
@@ -55,14 +54,20 @@ export function ProductList({category}: CategoryProps) {
 
     useEffect(() => {
         async function handleGetProducts() {
-            const response = await axios.get(`http://localhost:3333/allproducts?${category}`)
-            const data = JSON.stringify(response.data)
+            const response = await axios.get(`http://localhost:3333/allproducts`)
+            const products: ProductsProps[] = response.data
+
+            if (filterCategory) {
+                const filterProducts = products.filter(item => item.category === filterCategory)
+                setData(filterProducts)
+            } else {
+                setData(products)
+            }
     
-            setData(response.data)
         }
         handleGetProducts()
 
-    }, [category])
+    }, [filterCategory])
 
 
     return (
