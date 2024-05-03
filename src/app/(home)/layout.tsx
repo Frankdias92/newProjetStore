@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className='dark'>
-      <body className={`${inter.className} ${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable}`}>
+      <body className={`${inter.className} ${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable} bg-store-primary`}>
         <ProviderStore>
           {children}
         </ProviderStore>

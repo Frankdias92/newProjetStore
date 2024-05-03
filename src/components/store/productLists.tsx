@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { Tags } from "../detailsAdmin/tags"
 import { api } from "@/services/api"
 import axios from "axios"
+import Link from "next/link"
 
 
 interface ProductsProps {
@@ -27,6 +28,8 @@ interface CategoryProps {
 
 export function ProductList({filterCategory}: CategoryProps) {
     const [data, setData] = useState<ProductsProps[]>([])
+    console.log(data.map(item => item.urlProduct.split('/')[0]))
+    
 
     const dataFeature = [
         {
@@ -76,7 +79,7 @@ export function ProductList({filterCategory}: CategoryProps) {
             {data.map((item) => {
                 return (
 
-                    <div key={item.id} className="flex flex-col items-start w-[393px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
+                    <div key={item.id} className="flex flex-col items-start w-[353px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
                             <Image
                                 isZoomed
                                 width={345}
@@ -112,7 +115,9 @@ export function ProductList({filterCategory}: CategoryProps) {
                                 {item.price}
 
                                 <Button className="flex py-2 px-5 font-roboto text-sm font-bold bg-store-orange">
-                                    COMPRAR
+                                    <Link href={`/store/${String(item.id)}`}>
+                                        COMPRAR
+                                    </Link>
                                 </Button>
 
                             </span>

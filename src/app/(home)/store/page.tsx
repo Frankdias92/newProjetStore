@@ -11,7 +11,7 @@ export default function Store() {
 
     return (
         <section className="flex w-full min-h-full justify-between py-10">
-            <div className="flex flex-col w-3/4 h-screen  m-auto">
+            <div className="flex flex-col w-3/4 h-screen m-auto">
 
                 {variants.map((variant) => (
                     <Tabs 
@@ -21,7 +21,7 @@ export default function Store() {
                     >
                         <Tab key="Todos" title="Todos">
                             <Card>
-                                <CardBody>
+                                <CardBody className="flex flex-wrap bg-store-bgDasboard">
                                     <ProductList filterCategory='' />
                                 </CardBody>
                             </Card>
@@ -40,10 +40,20 @@ export default function Store() {
                                 </CardBody>
                             </Card>
                         </Tab>
-                        <Tab key="Thrustmaster" title="Thrustmaster"/>
-                        <Tab key="Volantes" title="Volantes"/>
-                        <Tab key="Diversos" title="Diversos"/>
-                        <Tab key="Peças & Reposição" title="Peças & Reposição"/>
+                        <Tab key="Volantes" title="Volantes">
+                            <Card>
+                                <CardBody>
+                                    <ProductList filterCategory='Volantes' />
+                                </CardBody>
+                            </Card>
+                        </Tab>
+                        <Tab key="Reposição" title="Reposição">
+                            <Card>
+                                <CardBody>
+                                    <ProductList filterCategory='Reposição' />
+                                </CardBody>
+                            </Card>
+                        </Tab>
                     </Tabs>
                 ))}
                 

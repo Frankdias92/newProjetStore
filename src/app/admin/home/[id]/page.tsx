@@ -9,7 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-interface DataProps {
+export interface DataProps {
     id: number
     title: string
     description?: string
