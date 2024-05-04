@@ -58,7 +58,7 @@ The footer provides links to the virtual drift pilot's affiliates.
 2. **Clone Repository:** Clone this repository to your local machine using Git:
 
    ```bash
-   git clone https://github.com/your-username/website-adriel999-store.git
+   git clone https://github.com/Frankdias92/newProjetStore
    ```
 
 3. **Install Dependencies:** Install the project's frontend dependencies:
