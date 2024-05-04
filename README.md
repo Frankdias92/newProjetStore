@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Improved README with Backend Information
 
-## Getting Started
+Based on your updated `package.json` for the backend, here's an enhanced version of your README:
 
-First, run the development server:
+**Project Name**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img src="./src/assets/files/LogoWebsite.png" alt="Man Technologist Light Skin Tone" width="238" height="38" /> </b>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Description**
 
-## Learn More
+This is an e-commerce website showcasing a virtual drift pilot and their products. It features a user-friendly interface with the following sections:
 
-To learn more about Next.js, take a look at the following resources:
+- **Home:** Introduces the virtual drift pilot and their expertise.
+- **Explorer:** Allows navigation through product categories.
+- **Videos:** Features video content related to the virtual drift pilot.
+- **Recommendations:** Showcases recommended products.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The website also includes a dedicated store page with:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Browsing by category using filters.
+- Individual product details with images.
+- Buttons redirecting users to affiliate links for purchasing products.
 
-## Deploy on Vercel
+The footer provides links to the virtual drift pilot's affiliates.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Technology Stack**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Frontend:** Next.js (React framework)
+- Additional Frontend Libraries:
+    - @nextui-org/react (UI components)
+    - axios (HTTP client)
+    - framer-motion (animations)
+    - react-icons (icons)
+    - react-slick (carousel)
+- Styling: Tailwind CSS
+- Linting: ESLint
+- Type checking: TypeScript
+
+**Backend:** Node.js with Express
+- Database: SQLite
+- Additional Backend Libraries:
+    - bcryptjs (password hashing)
+    - cors (cross-origin resource sharing)
+    - express-async-errors (error handling)
+    - jsonwebtoken (JSON Web Tokens for authentication)
+    - knex (SQL query builder)
+    - multer (file upload handling)
+
+**Setup Instructions**
+
+**Frontend:**
+
+1. **Prerequisites:**
+    - Node.js and npm (or yarn) installed on your system.
+
+2. **Clone Repository:** Clone this repository to your local machine using Git:
+
+   ```bash
+   git clone https://github.com/your-username/website-adriel999-store.git
+   ```
+
+3. **Install Dependencies:** Install the project's frontend dependencies:
+
+   ```bash
+   cd website-adriel999-store
+   npm install  # or yarn install
+   ```
+
+**Backend <a href='https://github.com/Frankdias92/product-store-api/tree/main'>(separete repository)</a>:**
+
+
+
+1. **Clone Backend Repository:** Clone the backend repository (if separate) to your local machine.
+
+2. **Install Dependencies:** Navigate to the backend directory and install its dependencies:
+
+   ```bash
+   cd backend-server-store  # Replace with your backend directory name
+   npm install  # or yarn install
+   ```
+
+**Running the Application**
+
+**Frontend:**
+
+1. **Development Server:** Start the development server to work on the website locally:
+
+   ```bash
+   npm run dev  # or yarn dev
+   ```
+
+   This will typically open your default browser at http://localhost:3000 (the port may vary).
+
+**Backend:**
+
+1. **Start Backend Server:** In the backend directory, run the server:
+
+   ```bash
+   npm start  # or yarn start
+   ```
+
+   **Note:** The default port for the backend server may vary. Check your backend code or configuration for the specific port.
+
+**Production Build and Deployment**
+
+Refer to the Next.js documentation for deployment instructions specific to your hosting provider: [https://nextjs.org/docs](https://nextjs.org/docs). Configure the frontend to communicate with the deployed backend API endpoint.
+
+**Contributing**
+
+[If you intend to accept contributions, outline your contribution guidelines here.]
+
+**License**
+
+[Specify the license under which your code is distributed.]
+
+**Additional Notes**
+
+- This project uses Next.js for a server-rendered React application.
+- The backend uses Node.js with Express and SQLite for data storage.
+- For more information on Next.js, refer to their official documentation.
