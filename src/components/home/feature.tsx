@@ -5,10 +5,12 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
+import { useRouter } from "next/navigation";
 
 
 
 export function Feature() {
+    const router = useRouter()
 
     const settings = {
       dots: true,
@@ -38,7 +40,7 @@ export function Feature() {
  
     
     return (
-        <div className="flex flex-col items-center w-full h-full py-10 overflow-hidden">
+        <div className="flex flex-col items-center w-full h-full py-5 overflow-hidden">
 
             <Slider {...settings} className="flex w-full flex-col h-full ">
 
@@ -56,7 +58,11 @@ export function Feature() {
 
                                     <div className="flex w-full items-center mt-10 gap-4">
                                         <span className="text-2xl font-bold font-galantic tracking-widest">{item.price}</span>
-                                        <Button className="flex py-7 px-8 font-roboto font-bold bg-store-orange text-2xl">COMPRAR</Button>
+                                        <Button className="flex py-7 px-8 font-roboto font-bold bg-store-orange text-2xl"
+                                            onClick={() => router.push('/store')}
+                                        >
+                                            COMPRAR
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
