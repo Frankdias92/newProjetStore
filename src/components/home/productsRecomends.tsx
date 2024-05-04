@@ -23,7 +23,7 @@ export function RecomendProducts() {
                             isZoomed
                             width={345}
                             alt='CAMMUS Wheelbase Racing'
-                            src='https://cammusracing.com/wp-content/uploads/2022/12/15Nm.jpg'
+                            src='https://antzperformance.com.au/wp-content/uploads/2024/04/DDWB-2021-Wheel-Base-copy-5.png'
                             className="flex w-[345px] h-[240px] bg-cover"
                         />
                 </Link>
