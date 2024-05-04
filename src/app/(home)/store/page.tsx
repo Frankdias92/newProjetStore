@@ -10,7 +10,7 @@ export default function Store() {
 
 
     return (
-        <section className="flex min-w-[430px] min-h-full justify-between py-10 overflow-hidden">
+        <section className="flex min-w-[430px] h-screen justify-between py-10 overflow-hidden duration-75">
             <div className="flex flex-col w-full sm:w-3/4 h-full m-auto">
 
                 {variants.map((variant) => (

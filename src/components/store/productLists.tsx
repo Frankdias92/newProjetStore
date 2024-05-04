@@ -80,7 +80,7 @@ export function ProductList({filterCategory}: CategoryProps) {
 
     return (
 
-        <div className="flex w-full h-full flex-wrap gap-5 justify-center xl:justify-start py-4">
+        <div className="flex w-full min-h-full flex-wrap gap-5 justify-center xl:justify-start py-4">
             {data.length > 0 ? '' : 
                 <span className="w-full text-start font-galantic text-xl tracking-widest animate-pulse duration-200">
                     Loading...
