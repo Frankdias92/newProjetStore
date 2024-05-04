@@ -28,8 +28,9 @@ interface CategoryProps {
 
 export function ProductList({filterCategory}: CategoryProps) {
     const [data, setData] = useState<ProductsProps[]>([])
-    console.log(data.map(item => item.urlProduct.split('/')[0]))
-    
+    const [productCategory, setProductCategory] = useState<string[]>([])    
+
+
 
     const dataFeature = [
         {
@@ -55,17 +56,21 @@ export function ProductList({filterCategory}: CategoryProps) {
         }
     ]
 
+    // console.log(filterCategory)
+    console.log(data.length > 0)
     useEffect(() => {
         async function handleGetProducts() {
             const response = await axios.get(`http://localhost:3333/allproducts`)
             const products: ProductsProps[] = response.data
+            const productCategory = products.map(item => item.category)
 
-            if (filterCategory) {
+            if (filterCategory !== 'Todos') {
                 const filterProducts = products.filter(item => item.category === filterCategory)
                 setData(filterProducts)
+                setProductCategory(productCategory)
             } else {
                 setData(products)
-            }
+            } 
     
         }
         handleGetProducts()
@@ -74,12 +79,20 @@ export function ProductList({filterCategory}: CategoryProps) {
 
 
     return (
-        <div className="flex w-full gap-5">
 
-            {data.map((item) => {
+        <div className="flex w-full h-full flex-wrap gap-5 justify-center xl:justify-start py-4">
+            {data.length > 0 ? '' : 
+                <span className="w-full text-start font-galantic text-xl tracking-widest animate-pulse duration-200">
+                    Loading...
+                </span>
+            }
+
+            { data.map((item) => {
                 return (
 
-                    <div key={item.id} className="flex flex-col items-start w-[353px] gap-4 h-[509px] px-6 py-5 rounded-3xl hover:bg-neutral-950/60 duration-75 relative">
+                    <div key={item.id} className="flex flex-col items-start w-[353px] gap-4 h-[509px] px-6 py-5 rounded-3xl
+                        bg-store-bgDasboard-Secondary/30 hover:bg-store-bgDasboard-Secondary duration-75 relative shadow-md hover:sm:shadow-xl
+                        hover:scale-[102%]">
                             <Image
                                 isZoomed
                                 width={345}
@@ -111,8 +124,11 @@ export function ProductList({filterCategory}: CategoryProps) {
                                     {item.description}
                                 </ScrollShadow>
                             </span>
-                            <span className="flex w-full  px-5 justify-between items-center font-galantic tracking-widest text-2xl absolute bottom-5 left-0">
-                                {item.price}
+                            <div className="flex w-full px-5 justify-between items-center font-galantic tracking-widest text-2xl absolute bottom-5 left-0">
+                                <span className="flex items-baseline gap-2">
+                                    <span className="text-base">R$</span>
+                                    {item.price}
+                                </span>
 
                                 <Button className="flex py-2 px-5 font-roboto text-sm font-bold bg-store-orange">
                                     <Link href={`/store/${String(item.id)}`}>
@@ -120,13 +136,15 @@ export function ProductList({filterCategory}: CategoryProps) {
                                     </Link>
                                 </Button>
 
-                            </span>
+                            </div>
                         </div>
 
                     </div>
                     
                 )
             })}
+
+        
             
         </div>
     )

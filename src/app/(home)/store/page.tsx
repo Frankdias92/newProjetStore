@@ -10,8 +10,8 @@ export default function Store() {
 
 
     return (
-        <section className="flex w-full min-h-full justify-between py-10">
-            <div className="flex flex-col w-3/4 h-screen m-auto">
+        <section className="flex min-w-[430px] min-h-full justify-between py-10 overflow-hidden">
+            <div className="flex flex-col w-full sm:w-3/4 h-full m-auto">
 
                 {variants.map((variant) => (
                     <Tabs 
@@ -22,34 +22,34 @@ export default function Store() {
                         <Tab key="Todos" title="Todos">
                             <Card>
                                 <CardBody className="flex flex-wrap bg-store-bgDasboard">
-                                    <ProductList filterCategory='' />
+                                    <ProductList filterCategory='Todos' />
                                 </CardBody>
                             </Card>
                         </Tab>
                         <Tab key="Brasil" title="Brasil">
                             <Card>
-                                <CardBody>
+                                <CardBody className="flex flex-wrap bg-store-bgDasboard">
                                     <ProductList filterCategory='Brasil' />
                                 </CardBody>
                             </Card>
                         </Tab>
                         <Tab key="Logitech" title="Logitech">
                             <Card>
-                                <CardBody>
+                                <CardBody className="flex flex-wrap bg-store-bgDasboard">
                                     <ProductList filterCategory='Logitech' />
                                 </CardBody>
                             </Card>
                         </Tab>
                         <Tab key="Volantes" title="Volantes">
                             <Card>
-                                <CardBody>
+                                <CardBody className="flex flex-wrap bg-store-bgDasboard">
                                     <ProductList filterCategory='Volantes' />
                                 </CardBody>
                             </Card>
                         </Tab>
                         <Tab key="Reposição" title="Reposição">
                             <Card>
-                                <CardBody>
+                                <CardBody className="flex flex-wrap bg-store-bgDasboard">
                                     <ProductList filterCategory='Reposição' />
                                 </CardBody>
                             </Card>
