@@ -1,12 +1,9 @@
-## Improved README with Backend Information
-
-Based on your updated `package.json` for the backend, here's an enhanced version of your README:
-
 **Project Name**
 
 
 <img src="./src/assets/files/LogoWebsite.png" alt="Man Technologist Light Skin Tone" width="238" height="38" /> </b>
 
+#### [You can see this project here!](https://ecommerce-adriell999.vercel.app/)
 
 **Description**
 
@@ -24,6 +21,7 @@ The website also includes a dedicated store page with:
 - Buttons redirecting users to affiliate links for purchasing products.
 
 The footer provides links to the virtual drift pilot's affiliates.
+
 
 **Technology Stack**
 
