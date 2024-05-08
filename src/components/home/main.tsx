@@ -8,7 +8,7 @@ import volante from '../../assets/images/wheel.png'
 export function Main() {
 
     return (
-        <main className="flex w-full h-[585px] justify-start relative bg-cover bg-center overflow-hidden">
+        <section className="flex w-full h-[585px] justify-start relative bg-cover bg-center overflow-hidden">
             <span className="flex drop-shadow-md z-30">
                 <h2 className="font-galantic flex w-[80%] text-8xl px-[15%] pt-9 z-30 content-start text-start text-store-secondary">
                     Sinta a emoção, viva a ação e acelere de verdade!
@@ -28,6 +28,6 @@ export function Main() {
 
         
             <div className="flex absolute w-full h-full bg-gradient-to-tl from-black to-black/5 z-10"/>
-        </main>
+        </section>
     )
 }

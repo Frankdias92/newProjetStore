@@ -2,7 +2,6 @@
 
 import { ProductList } from "@/components/store/productLists"
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react"
-import { useEffect, useState } from "react"
 
 
 export default function Store() {

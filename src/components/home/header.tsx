@@ -6,7 +6,7 @@ import Link from "next/link";
 export function Header() {
 
     return (
-        <header>
+        <div>
 
             <Navbar shouldHideOnScroll>
                 <NavbarBrand>
@@ -42,6 +42,6 @@ export function Header() {
                 </NavbarContent>
             </Navbar>
 
-        </header>
+        </div>
     )
 }

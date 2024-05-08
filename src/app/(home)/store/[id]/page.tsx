@@ -46,7 +46,7 @@ export default function StoreProductId() {
                 
                     <div className="flex flex-col w-[390px] h-[350px] absolute z-10 right-0 top-0 gap-6 translate-y-1/4">
                         <div className="flex flex-col w-full h-fit bg-store-primary rounded-xl shadow-large">
-                            <section className="grid grid-cols-2 w-full h-full p-6 gap-4">
+                            <div className="grid grid-cols-2 w-full h-full p-6 gap-4">
                                 <div className="text-center">
                                     <Section title="Produto">
                                         <Image
@@ -67,7 +67,7 @@ export default function StoreProductId() {
                                         </span>
                                     </Section>
                                 </div>
-                            </section>
+                            </div>
 
                             <div className="flex flex-col w-full px-6 gap-4 pb-4">
                                 <span className="flex gap-2 ">{data?.tags.map(tag => <Tags key={tag.id} title={tag.name}/>)}</span>
