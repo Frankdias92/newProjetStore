@@ -34,6 +34,15 @@ export interface ProductsProps {
     }[]
 }
 
+interface TagProps extends TagSelectedProps {
+    tags?: {
+        id: number
+        name: string
+        product_id?: number
+        user_id?: number
+    }[]
+}
+
 export default function HomePainel() {
     const [search, setSearch] = useState('')
     const [products, setProducts] = useState<ProductsProps[]>([])
@@ -43,20 +52,22 @@ export default function HomePainel() {
 
     console.log(products.map(item => item.tags) )
     
-    function handleTagSelected(tagName: any) {
-        if (tagName === 'all') {
-            return setTagsSelected([])
+    function handleTagSelected(tag: TagProps | string) {
+        if (typeof tag === 'string' && tag === 'all') {
+            return setTagsSelected([]);
         }
-        
-        const alreadySelected = tagsSelected.includes(tagName);
-
-        console.log(alreadySelected)
+    
+        const alreadySelected = typeof tag === 'string'
+            ? tagsSelected.some(selectedTag => typeof selectedTag === 'object' && 'name' in selectedTag && selectedTag.name === tag)
+            : tagsSelected.some(selectedTag => selectedTag.name === tag.name);
         
         if (alreadySelected) {
-            const filteredTags = tagsSelected.filter(tags => tags !== tagName);
+            const filteredTags = typeof tag === 'string' 
+                ? tagsSelected.filter(selectedTag => typeof selectedTag === 'object' && 'name' in selectedTag && selectedTag.name !== tag) 
+                : tagsSelected.filter(selectedTag => selectedTag.name !== tag.name);
             setTagsSelected(filteredTags);
         } else {
-            setTagsSelected(prevState => [ ...prevState, tagName ]);
+            setTagsSelected(prevState => [...prevState, typeof tag === 'string' ? { name: tag } : tag]);
         }
     }
     
@@ -110,8 +121,8 @@ export default function HomePainel() {
                             >
                                 <ButtonText 
                                     title={item.name}
-                                    onClick={() => handleTagSelected(item.name)}
-                                    isActive={tagsSelected.includes(item.name)}
+                                    onClick={() => handleTagSelected(item)}
+                                    isActive={tagsSelected.includes(item)}
                                 />
                             </li>
 
