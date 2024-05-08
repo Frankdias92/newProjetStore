@@ -61,7 +61,7 @@ function AuthProvider({ children }: any) {
     async function singIn({ email, password}: SingInProps) {
 
         try {
-            const response = await api.post('http://localhost:3333/sessions', { email, password })
+            const response = await api.post('/sessions', { email, password })
             const { user, token } = response.data
 
             // api.defaults.headers.authorization = `Bearer ${token}`

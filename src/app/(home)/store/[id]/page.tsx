@@ -17,9 +17,11 @@ export default function StoreProductId() {
     const params = useParams()
 
 
+    console.log('data', data)
+    console.log('params', params)
     useEffect(() => {
         async function FetchProductId() {
-            const response = await api.get(`http://localhost:3333/allproducts/${params.id}`)
+            const response = await api.get(`/allproducts/${params.id}`)
             const productId = response.data[0]
             setData(productId)
         }

@@ -70,7 +70,7 @@ export default function NewProduct() {
     
             tags.forEach(tag => formData.append('tags', tag));
     
-            const response = await api.post('http://localhost:3333/products', formData, {
+            const response = await api.post('/products', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

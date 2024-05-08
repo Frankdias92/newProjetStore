@@ -1,4 +1,4 @@
-'use client'
+
 
 import {Button, Image, ScrollShadow} from "@nextui-org/react"
 import { useEffect, useState } from "react"
@@ -30,7 +30,7 @@ export function ProductList({filterCategory}: CategoryProps) {
     const [data, setData] = useState<ProductsProps[]>([])
     const [productCategory, setProductCategory] = useState<string[]>([])    
 
-
+    console.log('data', data)
 
     const dataFeature = [
         {
@@ -60,7 +60,7 @@ export function ProductList({filterCategory}: CategoryProps) {
     console.log(data.length > 0)
     useEffect(() => {
         async function handleGetProducts() {
-            const response = await axios.get(`http://localhost:3333/allproducts`)
+            const response = await api.get(`/allproducts`)
             const products: ProductsProps[] = response.data
             const productCategory = products.map(item => item.category)
 
