@@ -44,7 +44,7 @@ export default function Profile() {
             old_password: passwordOld
         }
 
-        const userUpdated = Object.assign(user, updated)
+        const userUpdated = Object.assign({}, user, updated)
         
         updateProfile({ user: userUpdated, avatarFile })
     }
