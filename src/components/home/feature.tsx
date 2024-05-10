@@ -19,7 +19,7 @@ export function Feature() {
       slidesToScroll: 1,
       adaptiveHeight: false,
       variableWidth: false
-    };
+    }
 
     const dataFeature = [
         {
@@ -42,7 +42,7 @@ export function Feature() {
     return (
         <div className="flex flex-col items-center w-full h-full py-5 overflow-hidden">
 
-            <Slider {...settings} className="flex w-full flex-col h-full ">
+            <Slider {...settings} className="flex w-full flex-col h-full">
 
                 {dataFeature.map((item) => {
                     return (
@@ -68,9 +68,9 @@ export function Feature() {
                             </div>
 
                             <div className="flex w-[759px] h-[458px] absolute bg-cover top-20 right-52 z-10">
-                            <Image src={product01} alt="" width={1518} height={916} quality={100}
-                                className="flex"
-                            />
+                                <Image src={product01} alt="" width={1518} height={916} quality={100}
+                                    className="flex"
+                                />
                             </div>
 
                             <span className="text-[245px] h-[450px] font-galantic absolute text-black/15 -top-20 -translate-x-16 z-0">

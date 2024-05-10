@@ -8,10 +8,10 @@ interface VideoProps {
 export function LazyYoutube({ videoId }: VideoProps ) {
 
   return (
-    <div className="flex w-full rounded-t-xl">
+    <div className="flex w-full h-full rounded-xl overflow-hidden">
         <iframe
           width="100%"
-          height="200"
+          height="480"
           src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
           frameBorder="0"
