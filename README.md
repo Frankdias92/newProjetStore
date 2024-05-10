@@ -7,7 +7,7 @@
 
 **Description**
 
-This is an e-commerce website showcasing a virtual drift pilot and their products. It features a user-friendly interface with the following sections:
+This e-commerce website showcases a vitual drift pilot and their products, catering to Asseto Corsa enthusiasts and fans of virtual drifting. It features a user-friendly interface with the following sections:
 
 - **Home:** Introduces the virtual drift pilot and their expertise.
 - **Explorer:** Allows navigation through product categories.
@@ -105,16 +105,34 @@ The footer provides links to the virtual drift pilot's affiliates.
 
 Refer to the Next.js documentation for deployment instructions specific to your hosting provider: [https://nextjs.org/docs](https://nextjs.org/docs). Configure the frontend to communicate with the deployed backend API endpoint.
 
-**Contributing**
 
-[If you intend to accept contributions, outline your contribution guidelines here.]
+## **Deploy back-end**
 
-**License**
+- Node.js with Express: API server handling product data, user accounts, and interactions with the database.
 
-[Specify the license under which your code is distributed.]
+| Description | link |
+| --- | --- |
+| Repository | https://github.com/Frankdias92/product-store-api |
+
+## **Deploy front-end**
+
+- Next.js (React): Interactive user interface for browsing products, watching videos, and exploring the virtual drift pilot’s word.
+
+| Description | link |
+| --- | --- |
+| Repository | https://github.com/Frankdias92/newProjetStore |
+| deploy Vercel | https://ecommerce-adriell999.vercel.app/ |
+| route auth (login or create a new account) | https://ecommerce-adriell999.vercel.app/admin/login |
+
+
 
 **Additional Notes**
 
 - This project uses Next.js for a server-rendered React application.
 - The backend uses Node.js with Express and SQLite for data storage.
 - For more information on Next.js, refer to their official documentation.
+___
+<aside>
+⚠️ To get acess take a while, almost 50 seconds, because i’m using the free account. (so be patience)
+
+</aside>
