@@ -92,7 +92,7 @@ export function CreateAccount() {
                     type="button"
                     onClick={handleSingUp}
                     className="flex text-xl w-full h-[62px] tracking-widest font-bold justify-center px-12 py-5 bg-store-orange rounded-xl mt-6 shadow-lg antialiased
-                    outline-none border-0 focus:ring-2 focus:ring-explore-color-text-second"
+                    outline-none border-0 text-store-secondary focus:ring-2 focus:ring-explore-color-text-second"
                         style={{
                             outline: isFocusVisible ? 'rgb(245 157 26)' : 'none',
                         }}
