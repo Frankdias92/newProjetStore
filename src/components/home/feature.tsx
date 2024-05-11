@@ -7,19 +7,27 @@ import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 import { useRouter } from "next/navigation";
 
+import cammusC5 from '../../assets/images/featured-Products-02.png'
 
 
 export function Feature() {
+    
     const router = useRouter()
 
     const settings = {
-      dots: true,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      adaptiveHeight: false,
-      variableWidth: false
+        adaptiveHeight: true,
+        variableWidth: true,
+        dots: true,
+        speed: 500,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
+        initialSlide: 1
     }
+
 
     const dataFeature = [
         {
@@ -31,10 +39,10 @@ export function Feature() {
         },
         {
             id: 2,
-            productName: ' Thrustmaster T300 RS GT Edition',
-            productDescriptions: 'O volante Force Feedback Thrustmaster T300RS GT permite aos jogadores mergulharem verdadeiramente no mundo das corridas de automóveis e aperfeiçoarem as suas técnicas para melhorarem o seu desempenho.',
-            price: 'R$ 3.299,90',
-            image: 'https://images.kabum.com.br/produtos/fotos/150106/volante-e-pedais-thrustmaster-t300-rs-gt-edition-para-pc-ps4-ps3-4160644_1616590119_gg.jpg'
+            productName: 'CAMMUS C5',
+            productDescriptions: 'Material de couro com costura manual A melhor experiência de aderência. O acabamento é excelente, com uma textura de metal fosco. Você pode imaginar o poder de um piloto de corrida',
+            price: 'R$ 1284.04',
+            image: cammusC5
         }
     ]
  
@@ -42,23 +50,23 @@ export function Feature() {
     return (
         <div className="flex flex-col items-center w-full h-full py-5 overflow-hidden">
 
-            <Slider {...settings} className="flex w-full flex-col h-full">
+            <Slider {...settings}   className="flex w-full h-full">
 
                 {dataFeature.map((item) => {
                     return (
 
-                        <section key={item.id} className="flex flex-row justify-start w-3/4 px-[15%] h-[639px] relative">
-                            <div className="flex w-full justify-start ">
+                        <section key={item.id} className="flex px-20 xl:px-[15%] /* h-[639px] */ relative">
+                            <div className="flex flex-wrap w-3/4">
 
-                                <div className="w-3/5 z-30 ">
+                                <div className="flex flex-col w-3/5 z-30">
                                     <h3 className="font-galantic text-5xl mb-12">{item.productName}</h3>
-                                    <p className="font-roboto text-xl break-words">
+                                    <p className="flex w-[60%] xl:w-full font-raleway font-light text-xl break-words">
                                         {item.productDescriptions}
                                     </p>
 
                                     <div className="flex w-full items-center mt-10 gap-4">
                                         <span className="text-2xl font-bold font-galantic tracking-widest">{item.price}</span>
-                                        <Button className="flex py-7 px-8 font-roboto font-bold bg-store-orange text-2xl"
+                                        <Button className="flex py-7 px-8 font-raleway font-extrabold bg-store-orange text-2xl"
                                             onClick={() => router.push('/store')}
                                         >
                                             COMPRAR
@@ -67,13 +75,13 @@ export function Feature() {
                                 </div>
                             </div>
 
-                            <div className="flex w-[759px] h-[458px] absolute bg-cover top-20 right-52 z-10">
-                                <Image src={product01} alt="" width={1518} height={916} quality={100}
+                            <div className="flex w-[559px] h-[358px] xl:w-[759px] xl:h-[458px] relative xl:absolute bg-cover xl:top-20 xl:left-[650px] z-10">
+                                <Image src={item.image} alt="" width={1080} height={916} quality={100}
                                     className="flex"
                                 />
                             </div>
 
-                            <span className="text-[245px] h-[450px] font-galantic absolute text-black/15 -top-20 -translate-x-16 z-0">
+                            <span className="flex w-full break-words text-[245px] h-[450px] font-galantic absolute text-black/15 -top-20 -translate-x-16 z-0">
                                 {item.productName}
                             </span>
                             
