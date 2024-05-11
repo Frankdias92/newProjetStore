@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className='dark'>
       <body className={`${inter.className} ${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable} 
-      flex min-w-[430px] sm:w-full min-h-full flex-col justify-between bg-store-primary`}>
+      flex min-w-[780px] max-w-[1900px] sm:w-full min-h-full flex-col justify-between bg-store-primary`}>
         <ProviderStore>
           {children}
         </ProviderStore>

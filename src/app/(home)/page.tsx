@@ -11,7 +11,7 @@ import { RecomendProducts } from "@/components/home/productsRecomends";
 
 export default function Home() {
   return (
-      <section className="flex w-full min-h-full flex-col justify-between items-center bg-store-primary text-store-secondary gap-y-4">
+      <section className="flex min-w-[739px] xl:w-full min-h-full flex-col justify-between items-center bg-store-primary text-store-secondary gap-y-4">
         <Main />
         <Explore />
         <Feature />
