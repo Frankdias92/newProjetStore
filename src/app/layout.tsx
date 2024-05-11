@@ -1,8 +1,9 @@
-import { Roboto } from "next/font/google";
+import { Raleway, Roboto } from "next/font/google";
 import localFont from 'next/font/local'
 import './globals.css'
 
 const roboto = Roboto({ subsets: ["latin"], weight: ["300"], variable: '--font-roboto' })
+const raleway = Raleway({ subsets: ["latin"], weight: ["300"], variable: '--font-raleway' })
 const draco = localFont({
   src: './fonts/Draco.otf',
   variable: '--font-draco'
@@ -33,7 +34,7 @@ export default function RootLayout({
   
   return (
     <html lang="pt-BR">
-      <body className={`${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable}`}>
+      <body className={`${draco.variable} ${decking.variable} ${galantic.variable} ${roboto.variable} ${raleway.variable}`}>
         <section>
           {children}
         </section>

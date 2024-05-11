@@ -35,7 +35,7 @@ export function HeaderAdm() {
                     </div>
                 </Link>
 
-                <div className="flex gap-4 justify-self-center font-roboto font-thin tracking-widest text-lg">
+                <div className="flex gap-4 justify-self-center  font-thin tracking-widest text-lg">
                     <Link href={'/admin/home'}
                         className="hover:underline underline-offset-8 hover:text-store-orange text-opacity-0 duration-300"
                         >

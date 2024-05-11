@@ -1,6 +1,7 @@
 
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarProvider, NavbarMenuItem} from "@nextui-org/react";
 import Link from "next/link";
+import { LinksPages } from "./header/linksPages";
 
 
 export function Header() {
@@ -16,28 +17,15 @@ export function Header() {
                 </Link>
                 </NavbarBrand>
 
-                <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                    <NavbarItem>
-                        <Link color="foreground" href="/">
-                            Home
-                        </Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Link color="foreground" href="/store">
-                            Loja
-                        </Link>
-                    </NavbarItem>
-                    <NavbarItem>
-                        <Link color="foreground" href="#">
-                            Parceiros
-                        </Link>
-                    </NavbarItem>
-
+                <NavbarContent className="hidden sm:flex gap-4 font-raleway font-light tracking-wider opacity-80" justify="center">
+                    <LinksPages href="/" pageName="Home"/>
+                    <LinksPages href="/store" pageName="Loja"/>
+                    <LinksPages href="#" pageName="Parceiros"/>
                 </NavbarContent>
 
                 <NavbarContent justify="end">
                     <Button color="primary" variant="shadow">
-                        Discord
+                        <LinksPages href="https://discord.com/invite/FHkXD9M8N8" pageName="Discord"/>
                     </Button>
                 </NavbarContent>
             </Navbar>
