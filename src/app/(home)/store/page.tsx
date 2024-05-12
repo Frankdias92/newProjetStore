@@ -9,8 +9,8 @@ export default function Store() {
 
 
     return (
-        <section className="flex min-w-[430px] h-screen justify-between py-10 overflow-hidden duration-75">
-            <div className="flex flex-col w-full sm:w-3/4 h-full m-auto">
+        <section className="flex w-full min-h-full items-start overflow-hidden duration-75">
+            <div className="flex flex-col w-full justify-start sm:w-3/4 min-h-full m-auto">
 
                 {variants.map((variant) => (
                     <Tabs 
@@ -20,7 +20,7 @@ export default function Store() {
                     >
                         <Tab key="Todos" title="Todos">
                             <Card>
-                                <CardBody className="flex flex-wrap bg-store-bgDasboard">
+                                <CardBody className="flex sm:flex-wrap bg-store-bgDasboard">
                                     <ProductList filterCategory='Todos' />
                                 </CardBody>
                             </Card>
